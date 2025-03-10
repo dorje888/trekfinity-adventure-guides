@@ -5,6 +5,33 @@ import Footer from '@/components/Footer';
 import AboutSection from '@/components/AboutSection';
 
 const AboutPage = () => {
+  const teamMembers = [
+    {
+      name: "Tenzin Sherpa",
+      role: "Lead Guide & Founder",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+      bio: "With over 15 years of experience guiding treks through the Himalayas, Tenzin founded TrekTitan to share his passion for Nepal's mountains and culture with adventurers from around the world. He has summited Everest three times and is certified in high-altitude rescue."
+    },
+    {
+      name: "Lakpa Dorje",
+      role: "Senior Trek Guide",
+      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+      bio: "Born in the Khumbu region, Lakpa grew up in the shadow of Everest. His intimate knowledge of local trails, weather patterns and culture makes him an invaluable guide. Specializing in the Everest Base Camp and Annapurna Circuit treks, he's known for his patient teaching and storytelling."
+    },
+    {
+      name: "Maya Tamang",
+      role: "Cultural Guide & Operations Manager",
+      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+      bio: "Maya brings a deep understanding of Nepal's diverse ethnic cultures to our team. With a degree in Tourism Management and fluency in five languages, she ensures smooth operations while helping trekkers connect with local communities, understand traditions, and experience authentic cultural exchanges."
+    },
+    {
+      name: "Karma Bhutia",
+      role: "Expedition Coordinator",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+      bio: "Karma handles the complex logistics behind every successful expedition. From securing permits to arranging transportation and accommodations, his meticulous planning ensures each trek runs smoothly. His background in mountaineering and emergency response adds an extra layer of safety to our expeditions."
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -48,6 +75,40 @@ const AboutPage = () => {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Our Team Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mx-auto text-center mb-12">
+              <span className="inline-block py-1 px-3 mb-4 text-xs font-medium tracking-wider uppercase bg-nature-100 text-nature-800 rounded-full">
+                Our Experts
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Meet Our Team</h2>
+              <p className="text-lg text-gray-600">
+                Our experienced team of guides and support staff are the heart of TrekTitan, bringing unparalleled expertise and passion to every adventure.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {teamMembers.map((member, index) => (
+                <div key={index} className="bg-gray-50 rounded-xl overflow-hidden shadow-subtle transition-all duration-300 hover:shadow-lg">
+                  <div className="aspect-square overflow-hidden">
+                    <img 
+                      src={member.image} 
+                      alt={member.name} 
+                      className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
+                    <p className="text-nature-600 font-medium mb-4">{member.role}</p>
+                    <p className="text-gray-600 text-sm">{member.bio}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>

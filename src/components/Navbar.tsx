@@ -129,7 +129,7 @@ const Navbar = () => {
             ))}
             
             <Link 
-              to="#contact" 
+              to="/contact" 
               className="px-5 py-2 text-sm font-medium text-white bg-primary rounded-md hover:bg-primary/90 transition-premium shadow-subtle"
             >
               Book Now
@@ -199,7 +199,7 @@ const Navbar = () => {
               </div>
             ))}
             <Link 
-              to="#contact" 
+              to="/contact" 
               className="block mx-3 px-4 py-2 text-center text-white bg-primary rounded-md hover:bg-primary/90 transition-premium"
               onClick={closeMenu}
             >
