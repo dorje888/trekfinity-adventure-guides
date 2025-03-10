@@ -21,12 +21,28 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const toggleDropdown = (menu: string) => {
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = () => {
+      setActiveDropdown(null);
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, []);
+
+  const toggleDropdown = (menu: string, e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent the document click handler from immediately closing the dropdown
     if (activeDropdown === menu) {
       setActiveDropdown(null);
     } else {
       setActiveDropdown(menu);
     }
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+    setActiveDropdown(null);
   };
 
   const navLinks = [
@@ -65,7 +81,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <a href="/" className="flex items-center">
-              <span className="font-playfair text-2xl font-bold text-primary tracking-tight">Trekfinity</span>
+              <span className="font-playfair text-2xl font-bold text-primary tracking-tight">TrekTitan</span>
             </a>
           </div>
 
@@ -76,10 +92,12 @@ const Navbar = () => {
                 {link.dropdownItems ? (
                   <button 
                     className="flex items-center text-sm font-medium text-gray-700 hover:text-primary transition-premium"
-                    onClick={() => toggleDropdown(link.name)}
+                    onClick={(e) => toggleDropdown(link.name, e)}
+                    aria-expanded={activeDropdown === link.name}
+                    aria-haspopup="true"
                   >
                     {link.name}
-                    <ChevronDown className="ml-1 h-4 w-4" />
+                    <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", activeDropdown === link.name && "rotate-180")} />
                   </button>
                 ) : (
                   <a 
@@ -91,7 +109,7 @@ const Navbar = () => {
                 )}
                 
                 {link.dropdownItems && activeDropdown === link.name && (
-                  <div className="absolute left-0 mt-2 w-56 rounded-md bg-glass shadow-subtle transition-premium animate-fade-in">
+                  <div className="absolute left-0 mt-2 w-56 rounded-md bg-glass shadow-subtle transition-premium animate-fade-in z-10">
                     <div className="py-1">
                       {link.dropdownItems.map((item) => (
                         <a
@@ -122,6 +140,8 @@ const Navbar = () => {
               type="button"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-primary transition-premium"
+              aria-expanded={isMenuOpen}
+              aria-label="Toggle menu"
             >
               {isMenuOpen ? (
                 <X className="h-6 w-6" />
@@ -135,7 +155,7 @@ const Navbar = () => {
 
       {/* Mobile Navigation Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-white p-4 animate-fade-in">
+        <div className="md:hidden bg-white p-4 animate-fade-in shadow-subtle">
           <div className="flex flex-col space-y-3 pt-2 pb-4">
             {navLinks.map((link) => (
               <div key={link.name}>
@@ -143,7 +163,8 @@ const Navbar = () => {
                   <div>
                     <button 
                       className="flex items-center w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:text-primary transition-premium"
-                      onClick={() => toggleDropdown(link.name)}
+                      onClick={(e) => toggleDropdown(link.name, e)}
+                      aria-expanded={activeDropdown === link.name}
                     >
                       {link.name}
                       <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", activeDropdown === link.name && "rotate-180")} />
@@ -156,6 +177,7 @@ const Navbar = () => {
                             key={item.name}
                             href={item.href}
                             className="block px-3 py-2 text-sm text-gray-600 hover:text-primary transition-premium"
+                            onClick={closeMenu}
                           >
                             {item.name}
                           </a>
@@ -167,6 +189,7 @@ const Navbar = () => {
                   <a 
                     href={link.href} 
                     className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary transition-premium"
+                    onClick={closeMenu}
                   >
                     {link.name}
                   </a>
@@ -176,6 +199,7 @@ const Navbar = () => {
             <a 
               href="#contact" 
               className="block mx-3 px-4 py-2 text-center text-white bg-primary rounded-md hover:bg-primary/90 transition-premium"
+              onClick={closeMenu}
             >
               Book Now
             </a>

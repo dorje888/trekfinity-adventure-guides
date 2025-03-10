@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           <div className="space-y-6">
             <div>
-              <span className="font-playfair text-2xl font-bold text-white tracking-tight">Trekfinity</span>
+              <span className="font-playfair text-2xl font-bold text-white tracking-tight">TrekTitan</span>
             </div>
             <p className="text-mountain-200 leading-relaxed">
               Offering premium trekking experiences in Nepal's Himalayan mountains with expert local guides who bring the landscape, culture, and history to life.
@@ -131,8 +131,8 @@ const Footer = () => {
               <li className="flex items-start">
                 <span className="mt-1 mr-3 text-primary">✉️</span>
                 <span className="text-mountain-200">
-                  info@trekfinity.com<br />
-                  bookings@trekfinity.com
+                  info@trektitan.com<br />
+                  bookings@trektitan.com
                 </span>
               </li>
             </ul>
@@ -142,7 +142,7 @@ const Footer = () => {
         <div className="mt-12 pt-8 border-t border-mountain-800">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-mountain-300 text-sm mb-4 md:mb-0">
-              &copy; {new Date().getFullYear()} Trekfinity Adventures. All rights reserved.
+              &copy; {new Date().getFullYear()} TrekTitan Adventures. All rights reserved.
             </p>
             <p className="text-mountain-300 text-sm flex items-center">
               Crafted with <Heart className="h-4 w-4 text-red-500 mx-1 animate-pulse" /> for Nepal and its beautiful mountains
