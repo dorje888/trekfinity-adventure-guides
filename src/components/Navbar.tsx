@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -50,24 +51,24 @@ const Navbar = () => {
       name: 'Treks', 
       href: '#treks',
       dropdownItems: [
-        { name: 'Everest Base Camp', href: '#' },
-        { name: 'Annapurna Circuit', href: '#' },
-        { name: 'Langtang Valley', href: '#' },
-        { name: 'Manaslu Circuit', href: '#' },
+        { name: 'Everest Base Camp', href: '/treks/everest-base-camp' },
+        { name: 'Annapurna Circuit', href: '/treks/annapurna-circuit' },
+        { name: 'Langtang Valley', href: '/treks/langtang-valley' },
+        { name: 'Manaslu Circuit', href: '/treks/manaslu-circuit' },
       ]
     },
     { 
       name: 'Destinations', 
       href: '#destinations',
       dropdownItems: [
-        { name: 'Kathmandu', href: '#' },
-        { name: 'Pokhara', href: '#' },
-        { name: 'Chitwan', href: '#' },
-        { name: 'Lumbini', href: '#' },
+        { name: 'Kathmandu', href: '/destinations/kathmandu' },
+        { name: 'Pokhara', href: '/destinations/pokhara' },
+        { name: 'Chitwan', href: '/destinations/chitwan' },
+        { name: 'Lumbini', href: '/destinations/lumbini' },
       ]
     },
-    { name: 'About', href: '#about' },
-    { name: 'Testimonials', href: '#testimonials' },
+    { name: 'About', href: '/about' },
+    { name: 'Testimonials', href: '/testimonials' },
   ];
 
   return (
@@ -80,9 +81,9 @@ const Navbar = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <a href="/" className="flex items-center">
+            <Link to="/" className="flex items-center">
               <span className="font-playfair text-2xl font-bold text-primary tracking-tight">TrekTitan</span>
-            </a>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
@@ -100,25 +101,26 @@ const Navbar = () => {
                     <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", activeDropdown === link.name && "rotate-180")} />
                   </button>
                 ) : (
-                  <a 
-                    href={link.href} 
+                  <Link 
+                    to={link.href} 
                     className="text-sm font-medium text-gray-700 hover:text-primary transition-premium"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 )}
                 
                 {link.dropdownItems && activeDropdown === link.name && (
                   <div className="absolute left-0 mt-2 w-56 rounded-md bg-glass shadow-subtle transition-premium animate-fade-in z-10">
                     <div className="py-1">
                       {link.dropdownItems.map((item) => (
-                        <a
+                        <Link
                           key={item.name}
-                          href={item.href}
+                          to={item.href}
                           className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-primary transition-premium"
+                          onClick={closeMenu}
                         >
                           {item.name}
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   </div>
@@ -126,12 +128,12 @@ const Navbar = () => {
               </div>
             ))}
             
-            <a 
-              href="#contact" 
+            <Link 
+              to="#contact" 
               className="px-5 py-2 text-sm font-medium text-white bg-primary rounded-md hover:bg-primary/90 transition-premium shadow-subtle"
             >
               Book Now
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Navigation Toggle */}
@@ -173,36 +175,36 @@ const Navbar = () => {
                     {activeDropdown === link.name && (
                       <div className="pl-4 mt-1 space-y-1 animate-fade-in">
                         {link.dropdownItems.map((item) => (
-                          <a
+                          <Link
                             key={item.name}
-                            href={item.href}
+                            to={item.href}
                             className="block px-3 py-2 text-sm text-gray-600 hover:text-primary transition-premium"
                             onClick={closeMenu}
                           >
                             {item.name}
-                          </a>
+                          </Link>
                         ))}
                       </div>
                     )}
                   </div>
                 ) : (
-                  <a 
-                    href={link.href} 
+                  <Link 
+                    to={link.href} 
                     className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary transition-premium"
                     onClick={closeMenu}
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 )}
               </div>
             ))}
-            <a 
-              href="#contact" 
+            <Link 
+              to="#contact" 
               className="block mx-3 px-4 py-2 text-center text-white bg-primary rounded-md hover:bg-primary/90 transition-premium"
               onClick={closeMenu}
             >
               Book Now
-            </a>
+            </Link>
           </div>
         </div>
       )}
