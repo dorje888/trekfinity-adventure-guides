@@ -1,13 +1,13 @@
 
 import React, { useEffect, useRef } from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 
 const HeroSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
-  // Parallax effect
+  // Enhanced parallax effect
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (!containerRef.current || !imageRef.current || !contentRef.current) return;
@@ -17,10 +17,10 @@ const HeroSection = () => {
       const y = (e.clientY - top) / height - 0.5;
 
       // Subtle image movement
-      imageRef.current.style.transform = `translate(${x * -20}px, ${y * -20}px)`;
+      imageRef.current.style.transform = `translate(${x * -25}px, ${y * -25}px)`;
       
       // Even more subtle content movement
-      contentRef.current.style.transform = `translate(${x * 10}px, ${y * 10}px)`;
+      contentRef.current.style.transform = `translate(${x * 12}px, ${y * 12}px)`;
     };
 
     const container = containerRef.current;
@@ -40,6 +40,10 @@ const HeroSection = () => {
       ref={containerRef}
       className="relative w-full h-screen overflow-hidden parallax"
     >
+      {/* Decorative elements */}
+      <div className="circle-decoration w-[500px] h-[500px] top-[-100px] left-[-100px]"></div>
+      <div className="circle-decoration w-[300px] h-[300px] bottom-[-50px] right-[-50px]"></div>
+      
       {/* Background Image */}
       <div 
         ref={imageRef}
@@ -58,7 +62,8 @@ const HeroSection = () => {
         className="absolute inset-0 flex items-center justify-center text-center px-4 sm:px-6 lg:px-8 transition-transform duration-200 ease-out parallax-layer"
       >
         <div className="max-w-4xl animate-fade-in opacity-0" style={{ animationDelay: '300ms', animationFillMode: 'forwards' }}>
-          <span className="inline-block py-1 px-3 mb-6 text-xs font-medium tracking-wider uppercase bg-white/10 backdrop-blur-sm text-white rounded-full">
+          <span className="inline-flex items-center py-1.5 px-4 mb-6 text-xs font-medium tracking-wider uppercase bg-white/10 backdrop-blur-md text-white rounded-full border border-white/20">
+            <Sparkles className="w-3.5 h-3.5 mr-2 text-indigo-300 animate-soft-pulse" />
             Experience Nepal like never before
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight drop-shadow-md">
@@ -70,14 +75,14 @@ const HeroSection = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a 
               href="#treks" 
-              className="px-8 py-3 text-white bg-primary hover:bg-primary/90 rounded-md font-medium flex items-center gap-2 transition-premium group shadow-lg shadow-primary/20"
+              className="btn-futuristic text-white flex items-center gap-2 group"
             >
               Explore Treks
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </a>
             <a 
               href="#about" 
-              className="px-8 py-3 text-gray-900 bg-white hover:bg-gray-50 rounded-md font-medium transition-premium shadow-subtle"
+              className="px-8 py-3 text-white bg-white/10 hover:bg-white/20 border border-white/30 backdrop-blur-md rounded-lg font-medium transition-premium shadow-subtle"
             >
               Learn More
             </a>
@@ -86,7 +91,7 @@ const HeroSection = () => {
       </div>
       
       {/* Subtle bottom gradient */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent z-10" />
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background to-transparent z-10" />
     </div>
   );
 };

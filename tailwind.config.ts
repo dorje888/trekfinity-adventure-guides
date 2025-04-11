@@ -62,7 +62,7 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Custom colors for our trekking site
+				// Enhanced colors for our site
 				mountain: {
 					50: '#f5f7fa',
 					100: '#ebeef3',
@@ -89,7 +89,67 @@ export default {
 					900: '#254126',
 					950: '#132414',
 				},
-				// New futuristic colors - updated to be more unique
+				// New aesthetic colors
+				indigo: {
+					50: '#eeeaff',
+					100: '#d8d1ff',
+					200: '#b1a3ff',
+					300: '#8b76ff',
+					400: '#7057ff',
+					500: '#4b3bff',
+					600: '#3c2fcc',
+					700: '#2d2399',
+					800: '#1e1866',
+					900: '#0f0c33',
+				},
+				teal: {
+					50: '#e6fffa',
+					100: '#ccfff5',
+					200: '#99ffeb',
+					300: '#66ffe0',
+					400: '#33ffd6',
+					500: '#00e5c8',
+					600: '#00b7a0',
+					700: '#008978',
+					800: '#005c50',
+					900: '#002e28',
+				},
+				lavender: {
+					50: '#f3efff',
+					100: '#e7dfff',
+					200: '#cfbeff',
+					300: '#b79eff',
+					400: '#9f7eff',
+					500: '#875dff',
+					600: '#6c4acc',
+					700: '#513899',
+					800: '#362566',
+					900: '#1b1333',
+				},
+				rose: {
+					50: '#fff0f5',
+					100: '#ffe0eb',
+					200: '#ffc2d7',
+					300: '#ffa3c3',
+					400: '#ff85af',
+					500: '#ff669b',
+					600: '#cc527c',
+					700: '#993d5d',
+					800: '#66293e',
+					900: '#33141f',
+				},
+				mint: {
+					50: '#f0fff3',
+					100: '#e0ffe8',
+					200: '#c2ffd1',
+					300: '#a3ffba',
+					400: '#85ffa3',
+					500: '#66ff8c',
+					600: '#52cc70',
+					700: '#3d9954',
+					800: '#296638',
+					900: '#14331c',
+				},
 				aurora: {
 					50: '#e6fbff',
 					100: '#ccf7ff',
@@ -126,7 +186,6 @@ export default {
 					800: '#5c0066',
 					900: '#2e0033',
 				},
-				// New futuristic colors
 				cyber: {
 					50: '#e8fbfd',
 					100: '#d1f7fa',
@@ -237,6 +296,18 @@ export default {
 					'60%': { transform: 'translateX(-3px) translateY(-1px) rotate(0.5deg)' },
 					'80%': { transform: 'translateX(3px) translateY(1px) rotate(-0.5deg)' },
 					'100%': { transform: 'translateX(0) translateY(0) rotate(0)' },
+				},
+				'soft-pulse': {
+					'0%, 100%': { transform: 'scale(1)', opacity: '1' },
+					'50%': { transform: 'scale(1.05)', opacity: '0.8' }
+				},
+				'soft-float': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-15px)' }
+				},
+				'shimmer-elegant': {
+					'0%': { backgroundPosition: '-200% 0' },
+					'100%': { backgroundPosition: '200% 0' }
 				}
 			},
 			animation: {
@@ -257,6 +328,9 @@ export default {
 				'cyber-pulse': 'cyber-pulse 2s ease-in-out infinite',
 				'neon-flicker': 'neon-flicker 5s ease-in-out infinite',
 				'quantum-shift': 'quantum-shift 8s ease-in-out infinite',
+				'soft-pulse': 'soft-pulse 4s ease-in-out infinite',
+				'soft-float': 'soft-float 6s ease-in-out infinite',
+				'shimmer-elegant': 'shimmer-elegant 3s infinite linear',
 			},
 		}
 	},

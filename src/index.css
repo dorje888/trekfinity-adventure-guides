@@ -16,8 +16,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
 
-    /* Updated futuristic primary (nebula) */
-    --primary: 270 100% 50%;
+    /* Enhanced aesthetic primary color - rich indigo */
+    --primary: 255 70% 55%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 200 30% 96%;
@@ -26,8 +26,8 @@
     --muted: 210 40% 96%;
     --muted-foreground: 215 16% 47%;
 
-    /* Updated futuristic accent (quantum) */
-    --accent: 300 100% 60%;
+    /* Enhanced aesthetic accent color - vibrant teal */
+    --accent: 175 84% 56%;
     --accent-foreground: 222 47% 11%;
 
     --destructive: 0 84% 60%;
@@ -37,7 +37,7 @@
     --input: 214 32% 91%;
     --ring: 222 47% 11%;
 
-    /* Updated radius for more futuristic look */
+    /* Enhanced radius for more aesthetic look */
     --radius: 1rem;
 
     --sidebar-background: 0 0% 98%;
@@ -60,8 +60,8 @@
     --popover: 222 47% 8%;
     --popover-foreground: 210 40% 98%;
 
-    /* Updated futuristic primary (nebula) */
-    --primary: 270 100% 50%;
+    /* Enhanced aesthetic primary color - rich indigo */
+    --primary: 255 70% 55%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 217 33% 18%;
@@ -70,8 +70,8 @@
     --muted: 217 33% 18%;
     --muted-foreground: 215 20% 65%;
 
-    /* Updated futuristic accent (quantum) */
-    --accent: 300 100% 60%;
+    /* Enhanced aesthetic accent color - vibrant teal */
+    --accent: 175 84% 56%;
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 63% 31%;
@@ -162,7 +162,7 @@
   transition: transform 0.15s ease-out;
 }
 
-/* Updated futuristic glass background */
+/* Enhanced aesthetic glass background */
 .bg-glass {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(12px);
@@ -178,13 +178,13 @@
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Updated futuristic button styles */
+/* Enhanced aesthetic button styles */
 .btn-futuristic {
   @apply relative overflow-hidden rounded-lg px-6 py-3 inline-flex items-center justify-center;
   background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
   transition: all 0.3s ease;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 15px rgba(102, 0, 255, 0.3), 0 0 0 1px rgba(102, 0, 255, 0.1);
+  box-shadow: 0 4px 15px rgba(75, 59, 255, 0.3), 0 0 0 1px rgba(75, 59, 255, 0.1);
 }
 
 .btn-futuristic::before {
@@ -204,7 +204,7 @@
 }
 
 .btn-futuristic:hover {
-  box-shadow: 0 0 20px rgba(102, 0, 255, 0.6), 0 0 0 1px rgba(102, 0, 255, 0.2);
+  box-shadow: 0 0 20px rgba(75, 59, 255, 0.6), 0 0 0 1px rgba(75, 59, 255, 0.2);
   transform: translateY(-2px);
 }
 
@@ -222,34 +222,40 @@
   animation: shimmer 3s infinite linear;
 }
 
-/* Updated glassmorphism */
+/* Enhanced glassmorphism */
 .glassmorphism {
   @apply backdrop-blur-xl bg-white/10 border border-white/30 shadow-lg;
   box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
 }
 
-/* Updated neon border */
+/* Enhanced neon border */
 .neon-border {
-  box-shadow: 0 0 5px rgba(102, 0, 255, 0.5), 
-              0 0 10px rgba(102, 0, 255, 0.3), 
-              inset 0 0 5px rgba(102, 0, 255, 0.3);
+  box-shadow: 0 0 5px rgba(75, 59, 255, 0.5), 
+              0 0 10px rgba(75, 59, 255, 0.3), 
+              inset 0 0 5px rgba(75, 59, 255, 0.3);
 }
 
-/* Updated neon text */
+/* Enhanced neon text */
 .neon-text {
-  text-shadow: 0 0 5px rgba(102, 0, 255, 0.7), 
-               0 0 10px rgba(102, 0, 255, 0.5);
+  text-shadow: 0 0 5px rgba(75, 59, 255, 0.7), 
+               0 0 10px rgba(75, 59, 255, 0.5);
 }
 
-/* New Futuristic Elements */
-.cyber-card {
+/* New Aesthetic Elements */
+.aesthetic-card {
   @apply rounded-xl overflow-hidden relative;
-  background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(25,25,40,0.9) 100%);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(102, 0, 255, 0.2);
+  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.cyber-card::before {
+.aesthetic-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.aesthetic-card::before {
   content: '';
   position: absolute;
   top: 0;
@@ -259,38 +265,33 @@
   background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)));
 }
 
-.cyber-border {
-  border: 1px solid rgba(102, 0, 255, 0.3);
-  box-shadow: 0 0 15px rgba(102, 0, 255, 0.2);
+.aesthetic-border {
+  border: 1px solid rgba(75, 59, 255, 0.3);
+  box-shadow: 0 0 15px rgba(75, 59, 255, 0.2);
 }
 
-.quantum-gradient {
-  background: linear-gradient(135deg, #6600ff 0%, #ff66e8 100%);
+.aesthetic-gradient {
+  background: linear-gradient(135deg, #4b3bff 0%, #00e5c8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.cyber-glow {
-  filter: drop-shadow(0 0 8px rgba(25, 215, 232, 0.6));
+.indigo-glow {
+  filter: drop-shadow(0 0 8px rgba(75, 59, 255, 0.6));
 }
 
-.neon-glow {
-  filter: drop-shadow(0 0 8px rgba(46, 227, 115, 0.6));
+.teal-glow {
+  filter: drop-shadow(0 0 8px rgba(0, 229, 200, 0.6));
 }
 
-.quantum-glow {
-  filter: drop-shadow(0 0 8px rgba(255, 102, 232, 0.6));
-}
-
-.holographic-bg {
+.aesthetic-bg {
   background: linear-gradient(135deg, 
-    rgba(102, 0, 255, 0.2) 0%, 
-    rgba(25, 215, 232, 0.2) 50%, 
-    rgba(255, 102, 232, 0.2) 100%);
+    rgba(75, 59, 255, 0.05) 0%, 
+    rgba(0, 229, 200, 0.05) 100%);
   backdrop-filter: blur(10px);
 }
 
-/* Futuristic hover effects */
+/* Aesthetic hover effects */
 .hover-elevate {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -300,14 +301,63 @@
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
-.hover-glow-primary:hover {
-  box-shadow: 0 0 15px rgba(102, 0, 255, 0.5);
+.hover-glow-indigo:hover {
+  box-shadow: 0 0 15px rgba(75, 59, 255, 0.5);
 }
 
-.hover-glow-cyber:hover {
-  box-shadow: 0 0 15px rgba(25, 215, 232, 0.5);
+.hover-glow-teal:hover {
+  box-shadow: 0 0 15px rgba(0, 229, 200, 0.5);
 }
 
-.hover-glow-quantum:hover {
-  box-shadow: 0 0 15px rgba(255, 102, 232, 0.5);
+/* New floating animations */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes float-rotate {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-8px) rotate(2deg); }
+}
+
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+.animate-float-rotate {
+  animation: float-rotate 8s ease-in-out infinite;
+}
+
+/* Enhanced decorative elements */
+.circle-decoration {
+  @apply absolute rounded-full opacity-30 mix-blend-overlay;
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+  filter: blur(70px);
+}
+
+/* Enhanced card effects */
+.card-highlight {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-highlight::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(30deg);
+  transition: transform 0.5s ease;
+}
+
+.card-highlight:hover::after {
+  transform: rotate(30deg) translate(20%, 20%);
 }
