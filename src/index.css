@@ -16,7 +16,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
 
-    --primary: 210 100% 35%;
+    --primary: 262 83% 58%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 200 30% 96%;
@@ -25,7 +25,7 @@
     --muted: 210 40% 96%;
     --muted-foreground: 215 16% 47%;
 
-    --accent: 210 40% 93%;
+    --accent: 311 100% 50%;
     --accent-foreground: 222 47% 11%;
 
     --destructive: 0 84% 60%;
@@ -35,7 +35,7 @@
     --input: 214 32% 91%;
     --ring: 222 47% 11%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5% 26%;
@@ -57,7 +57,7 @@
     --popover: 222 47% 8%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 100% 50%;
+    --primary: 262 83% 58%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 217 33% 18%;
@@ -66,7 +66,7 @@
     --muted: 217 33% 18%;
     --muted-foreground: 215 20% 65%;
 
-    --accent: 217 33% 18%;
+    --accent: 311 100% 50%;
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 63% 31%;
@@ -169,4 +169,60 @@
 
 .transition-premium {
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Futuristic button styles */
+.btn-futuristic {
+  @apply relative overflow-hidden rounded-lg px-6 py-3 inline-flex items-center justify-center;
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+  transition: all 0.3s ease;
+}
+
+.btn-futuristic::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: translateX(-100%);
+}
+
+.btn-futuristic:hover::before {
+  transform: translateX(100%);
+  transition: transform 0.8s ease;
+}
+
+.btn-futuristic:hover {
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+}
+
+.btn-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.bg-shimmer {
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.1), 
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite linear;
+}
+
+.glassmorphism {
+  @apply backdrop-blur-md bg-white/20 border border-white/30 shadow-lg;
+}
+
+.neon-border {
+  box-shadow: 0 0 5px rgba(139, 92, 246, 0.5), 
+              0 0 10px rgba(139, 92, 246, 0.3), 
+              inset 0 0 5px rgba(139, 92, 246, 0.3);
+}
+
+.neon-text {
+  text-shadow: 0 0 5px rgba(139, 92, 246, 0.7), 
+               0 0 10px rgba(139, 92, 246, 0.5);
 }

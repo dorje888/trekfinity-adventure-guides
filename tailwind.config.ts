@@ -90,6 +90,43 @@ export default {
 					900: '#254126',
 					950: '#132414',
 				},
+				// New futuristic colors
+				aurora: {
+					50: '#f0f9ff',
+					100: '#e0f2fe',
+					200: '#bae6fd',
+					300: '#7dd3fc',
+					400: '#38bdf8',
+					500: '#0ea5e9',
+					600: '#0284c7',
+					700: '#0369a1',
+					800: '#075985',
+					900: '#0c4a6e',
+				},
+				nebula: {
+					50: '#f5f3ff',
+					100: '#ede9fe',
+					200: '#ddd6fe',
+					300: '#c4b5fd',
+					400: '#a78bfa',
+					500: '#8b5cf6',
+					600: '#7c3aed',
+					700: '#6d28d9',
+					800: '#5b21b6',
+					900: '#4c1d95',
+				},
+				cosmos: {
+					50: '#fdf4ff',
+					100: '#fae8ff',
+					200: '#f5d0fe',
+					300: '#f0abfc',
+					400: '#e879f9',
+					500: '#d946ef',
+					600: '#c026d3',
+					700: '#a21caf',
+					800: '#86198f',
+					900: '#701a75',
+				},
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -136,6 +173,14 @@ export default {
 				'pulse-subtle': {
 					'0%, 100%': { opacity: '1' },
 					'50%': { opacity: '0.8' }
+				},
+				'glow': {
+					'0%, 100%': { boxShadow: '0 0 5px rgba(139, 92, 246, 0.5)' },
+					'50%': { boxShadow: '0 0 20px rgba(139, 92, 246, 0.8)' }
+				},
+				'shimmer': {
+					'0%': { backgroundPosition: '-200% 0' },
+					'100%': { backgroundPosition: '200% 0' }
 				}
 			},
 			animation: {
@@ -151,6 +196,8 @@ export default {
 				'exit': 'fade-out 0.5s ease-out, scale-out 0.3s ease-out',
 				'float': 'float 6s ease-in-out infinite',
 				'pulse-subtle': 'pulse-subtle 4s ease-in-out infinite',
+				'glow': 'glow 2s ease-in-out infinite',
+				'shimmer': 'shimmer 3s infinite linear'
 			},
 		}
 	},
