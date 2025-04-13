@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown, Compass, Mountain, Users, MessageSquare } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -140,29 +141,31 @@ const Navbar = () => {
               </div>
             ))}
             
-            <Link 
-              to="/contact" 
-              className="btn-futuristic text-sm font-medium text-white shadow-lg"
+            <Button 
+              variant="taskbar"
+              className="text-sm font-medium shadow-lg"
+              asChild
             >
-              Book Now
-            </Link>
+              <Link to="/contact">Book Now</Link>
+            </Button>
           </div>
 
           {/* Mobile Navigation Toggle */}
           <div className="md:hidden">
-            <button
-              type="button"
+            <Button
+              variant="taskbar"
+              size="sm"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-white/80 hover:text-white hover:bg-white/10 transition-premium"
               aria-expanded={isMenuOpen}
               aria-label="Toggle menu"
+              className="p-2 rounded-md"
             >
               {isMenuOpen ? (
                 <X className="h-6 w-6" />
               ) : (
                 <Menu className="h-6 w-6" />
               )}
-            </button>
+            </Button>
           </div>
         </div>
       </div>
@@ -212,13 +215,18 @@ const Navbar = () => {
                 )}
               </div>
             ))}
-            <Link 
-              to="/contact" 
-              className="block mx-3 px-4 py-2 text-center text-white btn-futuristic"
-              onClick={closeMenu}
+            <Button 
+              variant="taskbar"
+              className="mx-3 text-center"
+              asChild
             >
-              Book Now
-            </Link>
+              <Link 
+                to="/contact"
+                onClick={closeMenu}
+              >
+                Book Now
+              </Link>
+            </Button>
           </div>
         </div>
       )}

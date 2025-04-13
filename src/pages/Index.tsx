@@ -7,6 +7,8 @@ import FeaturedTreks from '@/components/FeaturedTreks';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
+import { Button } from '@/components/ui/button';
+import { ArrowUp } from 'lucide-react';
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -44,16 +46,20 @@ const Index = () => {
       <ContactSection />
       <Footer />
       
-      {/* Back to top button */}
-      <a 
-        href="#" 
-        className="fixed bottom-6 right-6 w-12 h-12 bg-primary text-white rounded-full shadow-lg flex items-center justify-center hover:bg-primary/90 transition-premium z-40"
-        aria-label="Back to top"
+      {/* Back to top button - Now using the taskbar variant */}
+      <Button
+        variant="taskbar"
+        size="icon"
+        className="fixed bottom-6 right-6 w-12 h-12 rounded-full z-40"
+        asChild
       >
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
-        </svg>
-      </a>
+        <a 
+          href="#" 
+          aria-label="Back to top"
+        >
+          <ArrowUp className="h-5 w-5" />
+        </a>
+      </Button>
     </div>
   );
 };

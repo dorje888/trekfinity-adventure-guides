@@ -1,6 +1,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const HeroSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -72,19 +73,25 @@ const HeroSection = () => {
             Embark on unforgettable journeys through Nepal's majestic mountains with our expert guides.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a 
-              href="#treks" 
-              className="px-6 py-3 bg-indigo-500 hover:bg-indigo-600 text-white rounded-md transition-all duration-300 flex items-center gap-2 group"
+            <Button 
+              variant="default"
+              asChild
+              className="flex items-center gap-2 group"
             >
-              Explore Treks
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </a>
-            <a 
-              href="#about" 
-              className="px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 backdrop-blur-md text-white rounded-md transition-all duration-300"
+              <a href="#treks">
+                Explore Treks
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </a>
+            </Button>
+            <Button 
+              variant="minimal"
+              asChild
+              className="bg-white/5 hover:bg-white/10 border border-white/10 backdrop-blur-md text-white"
             >
-              Learn More
-            </a>
+              <a href="#about">
+                Learn More
+              </a>
+            </Button>
           </div>
         </div>
       </div>
