@@ -19,8 +19,9 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent/20 hover:text-accent-foreground transition-all duration-300",
         link: "text-primary underline-offset-4 hover:underline",
-        aesthetic: "bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white/20 transition-all duration-300 shadow-sm",
-        minimal: "bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-500/20 transition-all duration-300",
+        // Improved visibility variants
+        minimal: "bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-500/20 transition-all duration-300 shadow-sm border border-indigo-500/20",
+        taskbar: "bg-gray-100 text-gray-800 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 shadow-sm border border-gray-200 dark:border-gray-700 transition-all duration-300",
       },
       size: {
         default: "h-10 px-4 py-2",
