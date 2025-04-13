@@ -1,6 +1,6 @@
 
 import React, { useEffect, useRef } from 'react';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 const HeroSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -17,10 +17,10 @@ const HeroSection = () => {
       const y = (e.clientY - top) / height - 0.5;
 
       // Subtle image movement
-      imageRef.current.style.transform = `translate(${x * -25}px, ${y * -25}px)`;
+      imageRef.current.style.transform = `translate(${x * -20}px, ${y * -20}px)`;
       
       // Even more subtle content movement
-      contentRef.current.style.transform = `translate(${x * 12}px, ${y * 12}px)`;
+      contentRef.current.style.transform = `translate(${x * 10}px, ${y * 10}px)`;
     };
 
     const container = containerRef.current;
@@ -40,11 +40,11 @@ const HeroSection = () => {
       ref={containerRef}
       className="relative w-full h-screen overflow-hidden parallax"
     >
-      {/* Decorative elements */}
-      <div className="circle-decoration w-[500px] h-[500px] top-[-100px] left-[-100px]"></div>
-      <div className="circle-decoration w-[300px] h-[300px] bottom-[-50px] right-[-50px]"></div>
+      {/* Simplified decorative elements - just subtle gradient accents */}
+      <div className="absolute w-[400px] h-[400px] rounded-full bg-indigo-500/10 blur-[100px] top-[-100px] left-[-100px] opacity-40"></div>
+      <div className="absolute w-[300px] h-[300px] rounded-full bg-indigo-500/10 blur-[100px] bottom-[-50px] right-[-50px] opacity-30"></div>
       
-      {/* Background Image */}
+      {/* Background Image with simplified overlay */}
       <div 
         ref={imageRef}
         className="absolute inset-0 w-full h-full bg-cover bg-center transition-transform duration-200 ease-out scale-110 parallax-layer"
@@ -53,36 +53,35 @@ const HeroSection = () => {
           zIndex: -1 
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/70" />
       </div>
       
-      {/* Content */}
+      {/* Content with minimalist design */}
       <div 
         ref={contentRef}
         className="absolute inset-0 flex items-center justify-center text-center px-4 sm:px-6 lg:px-8 transition-transform duration-200 ease-out parallax-layer"
       >
         <div className="max-w-4xl animate-fade-in opacity-0" style={{ animationDelay: '300ms', animationFillMode: 'forwards' }}>
-          <span className="inline-flex items-center py-1.5 px-4 mb-6 text-xs font-medium tracking-wider uppercase bg-white/10 backdrop-blur-md text-white rounded-full border border-white/20">
-            <Sparkles className="w-3.5 h-3.5 mr-2 text-indigo-300 animate-soft-pulse" />
-            Experience Nepal like never before
+          <span className="inline-flex items-center py-1.5 px-4 mb-6 text-xs font-medium tracking-wider uppercase bg-white/5 backdrop-blur-md text-white rounded-full border border-white/10">
+            Experience Nepal
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight drop-shadow-md">
             Discover the Extraordinary <br /> Beauty of the Himalayas
           </h1>
-          <p className="text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto leading-relaxed text-balance">
-            Embark on unforgettable journeys through Nepal's majestic mountains with our expert guides who bring over 5 years of experience to every adventure.
+          <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed">
+            Embark on unforgettable journeys through Nepal's majestic mountains with our expert guides.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a 
               href="#treks" 
-              className="btn-futuristic text-white flex items-center gap-2 group"
+              className="px-6 py-3 bg-indigo-500 hover:bg-indigo-600 text-white rounded-md transition-all duration-300 flex items-center gap-2 group"
             >
               Explore Treks
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </a>
             <a 
               href="#about" 
-              className="px-8 py-3 text-white bg-white/10 hover:bg-white/20 border border-white/30 backdrop-blur-md rounded-lg font-medium transition-premium shadow-subtle"
+              className="px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 backdrop-blur-md text-white rounded-md transition-all duration-300"
             >
               Learn More
             </a>
