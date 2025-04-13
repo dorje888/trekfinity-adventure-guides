@@ -46,11 +46,11 @@ const Index = () => {
       <ContactSection />
       <Footer />
       
-      {/* Back to top button - Now using the taskbar variant */}
+      {/* Back to top button with enhanced visibility */}
       <Button
         variant="taskbar"
         size="icon"
-        className="fixed bottom-6 right-6 w-12 h-12 rounded-full z-40"
+        className="fixed bottom-6 right-6 w-12 h-12 rounded-full z-40 bg-indigo-500 hover:bg-indigo-600 text-white shadow-lg border border-indigo-400/30"
         asChild
       >
         <a 

@@ -86,7 +86,7 @@ const Navbar = () => {
     <nav 
       className={cn(
         "fixed w-full z-50 transition-all duration-300",
-        isScrolled ? "backdrop-blur-lg bg-white/5 border-b border-white/10 py-3" : "bg-transparent py-6"
+        isScrolled ? "backdrop-blur-lg bg-black/30 border-b border-white/10 py-3" : "bg-black/20 py-6"
       )}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -98,12 +98,12 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             {navLinks.map((link) => (
               <div key={link.name} className="relative group">
                 {link.dropdownItems ? (
                   <button 
-                    className="flex items-center text-sm font-medium text-white/90 hover:text-white transition-premium group"
+                    className="flex items-center px-3 py-2 rounded-md bg-white/10 hover:bg-white/20 text-sm font-medium text-white transition-all duration-200 shadow-sm border border-white/20"
                     onClick={(e) => toggleDropdown(link.name, e)}
                     aria-expanded={activeDropdown === link.name}
                     aria-haspopup="true"
@@ -115,7 +115,7 @@ const Navbar = () => {
                 ) : (
                   <Link 
                     to={link.href} 
-                    className="flex items-center text-sm font-medium text-white/90 hover:text-white transition-premium"
+                    className="flex items-center px-3 py-2 rounded-md bg-white/10 hover:bg-white/20 text-sm font-medium text-white transition-all duration-200 shadow-sm border border-white/20"
                   >
                     {link.icon}
                     <span className="ml-1">{link.name}</span>
@@ -129,7 +129,7 @@ const Navbar = () => {
                         <Link
                           key={item.name}
                           to={item.href}
-                          className="block px-4 py-2 text-sm text-white/80 hover:bg-white/10 hover:text-white rounded-md mx-1 my-1 transition-premium"
+                          className="block px-4 py-2 text-sm text-white hover:bg-white/10 rounded-md mx-1 my-1 transition-premium"
                           onClick={closeMenu}
                         >
                           {item.name}
@@ -143,7 +143,7 @@ const Navbar = () => {
             
             <Button 
               variant="taskbar"
-              className="text-sm font-medium shadow-lg"
+              className="text-sm font-medium shadow-lg bg-indigo-500 hover:bg-indigo-600 text-white border-indigo-400/30"
               asChild
             >
               <Link to="/contact">Book Now</Link>
@@ -158,7 +158,7 @@ const Navbar = () => {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-expanded={isMenuOpen}
               aria-label="Toggle menu"
-              className="p-2 rounded-md"
+              className="p-2 rounded-md bg-white/10 text-white hover:bg-white/20 border border-white/20"
             >
               {isMenuOpen ? (
                 <X className="h-6 w-6" />
@@ -172,14 +172,14 @@ const Navbar = () => {
 
       {/* Mobile Navigation Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-black/50 backdrop-blur-xl p-4 animate-fade-in border-t border-white/10">
+        <div className="md:hidden bg-black/80 backdrop-blur-xl p-4 animate-fade-in border-t border-white/10">
           <div className="flex flex-col space-y-3 pt-2 pb-4">
             {navLinks.map((link) => (
               <div key={link.name}>
                 {link.dropdownItems ? (
                   <div>
                     <button 
-                      className="flex items-center w-full text-left px-3 py-2 text-base font-medium text-white/80 hover:text-white transition-premium"
+                      className="flex items-center w-full text-left px-3 py-2 text-base font-medium text-white hover:bg-white/10 rounded-md transition-premium"
                       onClick={(e) => toggleDropdown(link.name, e)}
                       aria-expanded={activeDropdown === link.name}
                     >
@@ -194,7 +194,7 @@ const Navbar = () => {
                           <Link
                             key={item.name}
                             to={item.href}
-                            className="block px-3 py-2 text-sm text-white/70 hover:text-white transition-premium"
+                            className="block px-3 py-2 text-sm text-white/90 hover:bg-white/10 rounded-md transition-premium"
                             onClick={closeMenu}
                           >
                             {item.name}
@@ -206,7 +206,7 @@ const Navbar = () => {
                 ) : (
                   <Link 
                     to={link.href} 
-                    className="flex items-center px-3 py-2 text-base font-medium text-white/80 hover:text-white transition-premium"
+                    className="flex items-center px-3 py-2 text-base font-medium text-white hover:bg-white/10 rounded-md transition-premium"
                     onClick={closeMenu}
                   >
                     {link.icon}
@@ -217,7 +217,7 @@ const Navbar = () => {
             ))}
             <Button 
               variant="taskbar"
-              className="mx-3 text-center"
+              className="mx-3 text-center bg-indigo-500 hover:bg-indigo-600 text-white border-indigo-400/30"
               asChild
             >
               <Link 
