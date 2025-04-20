@@ -41,7 +41,7 @@ NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName
 const NavigationMenuItem = NavigationMenuPrimitive.Item
 
 const navigationMenuTriggerStyle = cva(
-  "group inline-flex h-10 w-max items-center justify-center rounded-md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-medium border border-gray-300 dark:border-gray-600 shadow-sm hover:shadow-md transition-colors hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/80 dark:data-[active]:bg-gray-700/80 data-[state=open]:bg-gray-100/80 dark:data-[state=open]:bg-gray-700/80"
+  "group inline-flex h-10 w-max items-center justify-center rounded-md bg-white/90 dark:bg-gray-800/90 px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100/90 dark:hover:bg-gray-700/90 focus:bg-gray-100/90 dark:focus:bg-gray-700/90 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/90 dark:data-[active]:bg-gray-700/90 data-[state=open]:bg-gray-100/90 dark:data-[state=open]:bg-gray-700/90 shadow-sm border border-gray-200 dark:border-gray-700"
 )
 
 const NavigationMenuTrigger = React.forwardRef<
@@ -69,7 +69,7 @@ const NavigationMenuContent = React.forwardRef<
   <NavigationMenuPrimitive.Content
     ref={ref}
     className={cn(
-      "left-0 top-0 w-full data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 md:absolute md:w-auto ",
+      "left-0 top-0 w-full data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 md:absolute md:w-auto bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm shadow-lg border border-gray-200 dark:border-gray-700 rounded-md",
       className
     )}
     {...props}
