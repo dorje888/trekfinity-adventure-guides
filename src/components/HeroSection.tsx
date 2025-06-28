@@ -1,103 +1,71 @@
-
-import React, { useEffect, useRef } from 'react';
-import { ArrowRight } from 'lucide-react';
+import React from 'react';
+import { ArrowRight, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const HeroSection = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLDivElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
-
-  // Enhanced parallax effect
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!containerRef.current || !imageRef.current || !contentRef.current) return;
-
-      const { left, top, width, height } = containerRef.current.getBoundingClientRect();
-      const x = (e.clientX - left) / width - 0.5;
-      const y = (e.clientY - top) / height - 0.5;
-
-      // Subtle image movement
-      imageRef.current.style.transform = `translate(${x * -20}px, ${y * -20}px)`;
-      
-      // Even more subtle content movement
-      contentRef.current.style.transform = `translate(${x * 10}px, ${y * 10}px)`;
-    };
-
-    const container = containerRef.current;
-    if (container) {
-      container.addEventListener('mousemove', handleMouseMove);
-    }
-
-    return () => {
-      if (container) {
-        container.removeEventListener('mousemove', handleMouseMove);
-      }
-    };
-  }, []);
-
   return (
-    <div 
-      ref={containerRef}
-      className="relative w-full h-screen overflow-hidden parallax"
-    >
-      {/* Simplified decorative elements - just subtle gradient accents */}
-      <div className="absolute w-[400px] h-[400px] rounded-full bg-indigo-500/10 blur-[100px] top-[-100px] left-[-100px] opacity-40"></div>
-      <div className="absolute w-[300px] h-[300px] rounded-full bg-indigo-500/10 blur-[100px] bottom-[-50px] right-[-50px] opacity-30"></div>
-      
-      {/* Background Image with simplified overlay */}
+    <div className="relative w-full h-screen overflow-hidden">
+      {/* Background Image with Minimal Overlay */}
       <div 
-        ref={imageRef}
-        className="absolute inset-0 w-full h-full bg-cover bg-center transition-transform duration-200 ease-out scale-110 parallax-layer"
+        className="absolute inset-0 w-full h-full bg-cover bg-center"
         style={{ 
           backgroundImage: 'url(https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2600&q=80)',
-          zIndex: -1 
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/70" />
+        <div className="absolute inset-0 bg-black/50" />
       </div>
       
-      {/* Content with minimalist design */}
-      <div 
-        ref={contentRef}
-        className="absolute inset-0 flex items-center justify-center text-center px-4 sm:px-6 lg:px-8 transition-transform duration-200 ease-out parallax-layer"
-      >
-        <div className="max-w-4xl animate-fade-in opacity-0" style={{ animationDelay: '300ms', animationFillMode: 'forwards' }}>
-          <span className="inline-flex items-center py-1.5 px-4 mb-6 text-xs font-medium tracking-wider uppercase bg-white/5 backdrop-blur-md text-white rounded-full border border-white/10">
-            Experience Nepal
-          </span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight drop-shadow-md">
-            Discover the Extraordinary <br /> Beauty of the Himalayas
-          </h1>
-          <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Embark on unforgettable journeys through Nepal's majestic mountains with our expert guides.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button 
-              variant="default"
-              asChild
-              className="flex items-center gap-2 group"
-            >
-              <a href="#treks">
+      {/* Content */}
+      <div className="relative z-10 flex items-center justify-center h-full container-padding">
+        <div className="max-w-4xl text-center space-y-8">
+          {/* Badge */}
+          <div className="animate-fade-in">
+            <span className="inline-flex items-center px-4 py-2 text-sm font-medium text-white/90 bg-white/10 rounded-full border border-white/20 backdrop-blur-sm">
+              Discover Nepal's Wonders
+            </span>
+          </div>
+          
+          {/* Main Heading */}
+          <div className="space-y-4 animate-fade-in animation-delay-200">
+            <h1 className="text-hero text-white font-bold">
+              Extraordinary
+              <span className="block">Himalayan Adventures</span>
+            </h1>
+            <p className="text-xl text-white/80 max-w-2xl mx-auto leading-relaxed">
+              Experience the breathtaking beauty of Nepal with our expert-guided treks 
+              through the world's most majestic mountains.
+            </p>
+          </div>
+          
+          {/* Call to Action */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in animation-delay-400">
+            <Button size="lg" className="bg-white text-black hover:bg-white/90 h-12 px-8 text-base font-medium">
+              <a href="#treks" className="flex items-center gap-2">
                 Explore Treks
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="w-4 h-4" />
               </a>
             </Button>
+            
             <Button 
-              variant="minimal"
-              asChild
-              className="bg-white/5 hover:bg-white/10 border border-white/10 backdrop-blur-md text-white"
+              variant="outline" 
+              size="lg"
+              className="border-white/30 text-white hover:bg-white/10 h-12 px-8 text-base font-medium bg-transparent"
             >
-              <a href="#about">
-                Learn More
+              <a href="#about" className="flex items-center gap-2">
+                <Play className="w-4 h-4" />
+                Watch Story
               </a>
             </Button>
           </div>
         </div>
       </div>
       
-      {/* Subtle bottom gradient */}
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background to-transparent z-10" />
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-fade-in animation-delay-400">
+        <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+          <div className="w-1 h-3 bg-white/60 rounded-full mt-2 animate-pulse" />
+        </div>
+      </div>
     </div>
   );
 };

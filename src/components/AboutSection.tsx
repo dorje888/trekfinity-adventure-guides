@@ -1,109 +1,86 @@
-
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { Mountain, Users, Award, Clock } from 'lucide-react';
 
 const AboutSection = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const elements = entry.target.querySelectorAll('.animate-reveal');
-            elements.forEach((el, i) => {
-              setTimeout(() => {
-                el.classList.add('revealed');
-              }, i * 150);
-            });
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
-
   const features = [
     {
-      icon: <Mountain className="h-6 w-6 text-nature-500" />,
+      icon: <Mountain className="h-5 w-5" />,
       title: "Expert Local Guides",
-      description: "Our guides have over 5 years of experience in navigating Nepal's challenging terrain."
+      description: "Over 10 years of experience navigating Nepal's challenging terrain with local expertise."
     },
     {
-      icon: <Users className="h-6 w-6 text-nature-500" />,
+      icon: <Users className="h-5 w-5" />,
       title: "Small Group Sizes",
-      description: "We maintain small groups to ensure personalized attention and authentic experiences."
+      description: "Intimate groups ensuring personalized attention and authentic cultural connections."
     },
     {
-      icon: <Award className="h-6 w-6 text-nature-500" />,
-      title: "Safety First Approach",
-      description: "Comprehensive safety protocols and equipment for peace of mind during adventures."
+      icon: <Award className="h-5 w-5" />,
+      title: "Safety First",
+      description: "Comprehensive safety protocols and professional-grade equipment for all adventures."
     },
     {
-      icon: <Clock className="h-6 w-6 text-nature-500" />,
+      icon: <Clock className="h-5 w-5" />,
       title: "Flexible Itineraries",
-      description: "Custom itineraries that can be adjusted to match your pace and preferences."
+      description: "Custom journeys adapted to your pace, preferences, and physical capabilities."
     }
   ];
 
   return (
-    <section id="about" ref={sectionRef} className="py-24 bg-white overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="section-padding bg-muted/30">
+      <div className="container mx-auto container-padding">
+        {/* Header */}
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <span className="inline-block animate-reveal py-1 px-3 mb-4 text-xs font-medium tracking-wider uppercase bg-nature-100 text-nature-800 rounded-full">
+          <div className="inline-flex items-center px-3 py-1 mb-6 text-sm font-medium bg-background rounded-full border">
             About Us
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 animate-reveal">Passionate About Authentic Travel Experiences</h2>
-          <p className="text-lg text-gray-600 leading-relaxed animate-reveal">
-            At Trekfinity, we believe in creating unforgettable journeys that connect travelers with Nepal's extraordinary landscapes and vibrant cultures. Our experienced guides don't just lead treks; they share stories, knowledge, and a deep love for the Himalayas.
+          </div>
+          <h2 className="text-section-title mb-6">
+            Authentic Himalayan Adventures
+          </h2>
+          <p className="text-body max-w-2xl mx-auto">
+            We create transformative journeys through Nepal's extraordinary landscapes, 
+            connecting travelers with the raw beauty of the Himalayas and vibrant local cultures.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="relative animate-reveal">
-            <div className="absolute -top-4 -left-4 w-24 h-24 bg-nature-100 rounded-full -z-10 animate-pulse-subtle"></div>
-            <div className="absolute -bottom-4 -right-4 w-36 h-36 bg-mountain-100 rounded-full -z-10 animate-pulse-subtle"></div>
-            
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* Image */}
+          <div className="order-2 lg:order-1">
+            <div className="aspect-[4/3] rounded-2xl overflow-hidden modern-card">
               <img 
                 src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=80" 
-                alt="Stunning Himalayan mountain landscape" 
-                className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                alt="Himalayan mountain landscape" 
+                className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
               />
             </div>
           </div>
 
-          <div className="space-y-8">
-            <div className="animate-reveal">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Story</h3>
-              <p className="text-gray-600 mb-6 leading-relaxed">
-                Founded by a team of passionate mountaineers and cultural enthusiasts, Trekfinity was born from a deep love for Nepal's majestic landscapes and rich heritage. For over a decade, we've been guiding adventurers through the breathtaking terrain of the Himalayas, creating journeys that go beyond sightseeing.
+          {/* Content */}
+          <div className="order-1 lg:order-2 space-y-8">
+            <div>
+              <h3 className="text-card-title mb-4">Our Mission</h3>
+              <p className="text-body mb-4">
+                Founded by passionate mountaineers, we've spent over a decade guiding adventurers 
+                through the breathtaking Himalayan terrain. Every journey we create goes beyond 
+                trekking—it's about cultural immersion and personal transformation.
               </p>
-              <p className="text-gray-600 leading-relaxed">
-                Our guides have spent years exploring every trail, peak, and valley, developing intimate knowledge of the land and forming lasting relationships with local communities. This dedication ensures that our treks offer authentic insights and experiences that would be impossible to discover on your own.
+              <p className="text-body">
+                Our local guides bring intimate knowledge of ancient trails and lasting 
+                relationships with mountain communities, ensuring authentic experiences 
+                that connect you deeply with Nepal's heritage.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
+            {/* Features Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
               {features.map((feature, index) => (
-                <div key={index} className="animate-reveal flex gap-4 p-5 rounded-xl bg-gray-50 transition-premium hover:shadow-subtle hover:bg-white">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-nature-100 flex items-center justify-center">
-                    {feature.icon}
+                <div key={index} className="modern-card p-6">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                      {feature.icon}
+                    </div>
+                    <h4 className="font-medium">{feature.title}</h4>
                   </div>
-                  <div>
-                    <h4 className="text-lg font-semibold text-gray-900 mb-1">{feature.title}</h4>
-                    <p className="text-sm text-gray-600">{feature.description}</p>
-                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
                 </div>
               ))}
             </div>

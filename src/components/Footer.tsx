@@ -1,163 +1,158 @@
-
 import React from 'react';
-import { Facebook, Instagram, Twitter, ChevronRight, Heart, Zap, Globe, MailPlus } from 'lucide-react';
+import { Facebook, Instagram, Twitter, MapPin, Phone, Mail, Mountain } from 'lucide-react';
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
+  const links = {
+    company: [
+      { name: 'About Us', href: '#about' },
+      { name: 'Our Team', href: '#team' },
+      { name: 'Testimonials', href: '#testimonials' },
+      { name: 'Contact', href: '#contact' },
+    ],
+    treks: [
+      { name: 'Everest Base Camp', href: '/treks/everest-base-camp' },
+      { name: 'Annapurna Circuit', href: '/treks/annapurna-circuit' },
+      { name: 'Langtang Valley', href: '/treks/langtang-valley' },
+      { name: 'Manaslu Circuit', href: '/treks/manaslu-circuit' },
+    ],
+    legal: [
+      { name: 'Privacy Policy', href: '/privacy' },
+      { name: 'Terms of Service', href: '/terms' },
+      { name: 'Booking Terms', href: '/booking-terms' },
+      { name: 'Cancellation Policy', href: '/cancellation' },
+    ]
+  };
+
+  const socialLinks = [
+    { name: 'Facebook', icon: Facebook, href: '#' },
+    { name: 'Instagram', icon: Instagram, href: '#' },
+    { name: 'Twitter', icon: Twitter, href: '#' },
+  ];
+
   return (
-    <footer className="bg-gradient-to-b from-mountain-900 to-mountain-950 text-white overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <footer className="bg-muted/50 border-t">
+      <div className="container mx-auto container-padding py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          <div className="space-y-6">
-            <div>
-              <span className="font-playfair text-2xl font-bold text-white tracking-tight neon-text flex items-center">
-                <Zap className="h-5 w-5 mr-1 text-nebula-400" />
-                TrekTitan
-              </span>
+          {/* Brand Section */}
+          <div className="lg:col-span-1">
+            <div className="flex items-center gap-2 mb-6">
+              <Mountain className="h-6 w-6 text-primary" />
+              <span className="text-xl font-bold text-foreground">TrekFinity</span>
             </div>
-            <p className="text-mountain-200 leading-relaxed">
-              Offering premium trekking experiences in Nepal's Himalayan mountains with expert local guides who bring the landscape, culture, and history to life.
+            <p className="text-muted-foreground mb-6 leading-relaxed">
+              Discover Nepal's majestic Himalayas with expert local guides. 
+              Creating unforgettable adventures since 2014.
             </p>
-            <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-nebula-500 transition-premium">
-                <Facebook className="h-5 w-5" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-nebula-500 transition-premium">
-                <Instagram className="h-5 w-5" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-nebula-500 transition-premium">
-                <Twitter className="h-5 w-5" />
-              </a>
+            
+            {/* Social Links */}
+            <div className="flex gap-4">
+              {socialLinks.map((social) => {
+                const Icon = social.icon;
+                return (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    className="w-10 h-10 rounded-lg bg-background border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-colors"
+                    aria-label={social.name}
+                  >
+                    <Icon className="h-4 w-4" />
+                  </a>
+                );
+              })}
             </div>
           </div>
-          
+
+          {/* Company Links */}
           <div>
-            <h4 className="text-lg font-bold mb-6 tracking-wide flex items-center">
-              <Globe className="h-4 w-4 mr-2 text-cosmos-400" />
-              Quick Links
-            </h4>
-            <ul className="space-y-3">
-              <li>
-                <a href="#about" className="flex items-center text-mountain-200 hover:text-white transition-premium group">
-                  <ChevronRight className="h-4 w-4 mr-2 text-nebula-500 group-hover:translate-x-1 transition-transform" />
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="#treks" className="flex items-center text-mountain-200 hover:text-white transition-premium group">
-                  <ChevronRight className="h-4 w-4 mr-2 text-nebula-500 group-hover:translate-x-1 transition-transform" />
-                  Our Treks
-                </a>
-              </li>
-              <li>
-                <a href="#testimonials" className="flex items-center text-mountain-200 hover:text-white transition-premium group">
-                  <ChevronRight className="h-4 w-4 mr-2 text-nebula-500 group-hover:translate-x-1 transition-transform" />
-                  Testimonials
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="flex items-center text-mountain-200 hover:text-white transition-premium group">
-                  <ChevronRight className="h-4 w-4 mr-2 text-nebula-500 group-hover:translate-x-1 transition-transform" />
-                  Contact Us
-                </a>
-              </li>
-              <li>
-                <a href="#" className="flex items-center text-mountain-200 hover:text-white transition-premium group">
-                  <ChevronRight className="h-4 w-4 mr-2 text-nebula-500 group-hover:translate-x-1 transition-transform" />
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a href="#" className="flex items-center text-mountain-200 hover:text-white transition-premium group">
-                  <ChevronRight className="h-4 w-4 mr-2 text-nebula-500 group-hover:translate-x-1 transition-transform" />
-                  Terms & Conditions
-                </a>
-              </li>
-            </ul>
-          </div>
-          
-          <div>
-            <h4 className="text-lg font-bold mb-6 tracking-wide flex items-center">
-              <Zap className="h-4 w-4 mr-2 text-aurora-400" />
-              Popular Treks
-            </h4>
-            <ul className="space-y-3">
-              <li>
-                <a href="#" className="flex items-center text-mountain-200 hover:text-white transition-premium group">
-                  <ChevronRight className="h-4 w-4 mr-2 text-nebula-500 group-hover:translate-x-1 transition-transform" />
-                  Everest Base Camp
-                </a>
-              </li>
-              <li>
-                <a href="#" className="flex items-center text-mountain-200 hover:text-white transition-premium group">
-                  <ChevronRight className="h-4 w-4 mr-2 text-nebula-500 group-hover:translate-x-1 transition-transform" />
-                  Annapurna Circuit
-                </a>
-              </li>
-              <li>
-                <a href="#" className="flex items-center text-mountain-200 hover:text-white transition-premium group">
-                  <ChevronRight className="h-4 w-4 mr-2 text-nebula-500 group-hover:translate-x-1 transition-transform" />
-                  Langtang Valley
-                </a>
-              </li>
-              <li>
-                <a href="#" className="flex items-center text-mountain-200 hover:text-white transition-premium group">
-                  <ChevronRight className="h-4 w-4 mr-2 text-nebula-500 group-hover:translate-x-1 transition-transform" />
-                  Manaslu Circuit
-                </a>
-              </li>
-              <li>
-                <a href="#" className="flex items-center text-mountain-200 hover:text-white transition-premium group">
-                  <ChevronRight className="h-4 w-4 mr-2 text-nebula-500 group-hover:translate-x-1 transition-transform" />
-                  Upper Mustang
-                </a>
-              </li>
-              <li>
-                <a href="#" className="flex items-center text-mountain-200 hover:text-white transition-premium group">
-                  <ChevronRight className="h-4 w-4 mr-2 text-nebula-500 group-hover:translate-x-1 transition-transform" />
-                  Gokyo Lakes
-                </a>
-              </li>
-            </ul>
-          </div>
-          
-          <div>
-            <h4 className="text-lg font-bold mb-6 tracking-wide flex items-center">
-              <MailPlus className="h-4 w-4 mr-2 text-cosmos-400" />
-              Contact Info
-            </h4>
+            <h3 className="font-semibold text-foreground mb-6">Company</h3>
             <ul className="space-y-4">
-              <li className="flex items-start">
-                <span className="mt-1 mr-3 text-nebula-500">📍</span>
-                <span className="text-mountain-200">
-                  Thamel, Kathmandu<br />
-                  Nepal
-                </span>
-              </li>
-              <li className="flex items-start">
-                <span className="mt-1 mr-3 text-nebula-500">📞</span>
-                <span className="text-mountain-200">
-                  +977 1 4000000<br />
-                  +977 9800000000
-                </span>
-              </li>
-              <li className="flex items-start">
-                <span className="mt-1 mr-3 text-nebula-500">✉️</span>
-                <span className="text-mountain-200">
-                  info@trektitan.com<br />
-                  bookings@trektitan.com
-                </span>
-              </li>
+              {links.company.map((link) => (
+                <li key={link.name}>
+                  <a
+                    href={link.href}
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))}
             </ul>
+          </div>
+
+          {/* Trek Links */}
+          <div>
+            <h3 className="font-semibold text-foreground mb-6">Popular Treks</h3>
+            <ul className="space-y-4">
+              {links.treks.map((link) => (
+                <li key={link.name}>
+                  <a
+                    href={link.href}
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h3 className="font-semibold text-foreground mb-6">Contact Info</h3>
+            <div className="space-y-4">
+              <div className="flex items-start gap-3">
+                <MapPin className="h-4 w-4 text-muted-foreground mt-0.5 flex-shrink-0" />
+                <div className="text-sm text-muted-foreground">
+                  <div>Thamel, Kathmandu</div>
+                  <div>Nepal</div>
+                </div>
+              </div>
+              
+              <div className="flex items-start gap-3">
+                <Phone className="h-4 w-4 text-muted-foreground mt-0.5 flex-shrink-0" />
+                <div className="text-sm text-muted-foreground">
+                  <div>+977 1 4000000</div>
+                  <div>+977 9800000000</div>
+                </div>
+              </div>
+              
+              <div className="flex items-start gap-3">
+                <Mail className="h-4 w-4 text-muted-foreground mt-0.5 flex-shrink-0" />
+                <div className="text-sm text-muted-foreground">
+                  <div>info@trekfinity.com</div>
+                  <div>bookings@trekfinity.com</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        
-        <div className="mt-12 pt-8 border-t border-mountain-800">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-mountain-300 text-sm mb-4 md:mb-0">
-              &copy; {new Date().getFullYear()} TrekTitan Adventures. All rights reserved.
-            </p>
-            <p className="text-mountain-300 text-sm flex items-center">
-              Crafted with <Heart className="h-4 w-4 text-cosmos-500 mx-1 animate-pulse" /> for Nepal and its beautiful mountains
+
+        {/* Bottom Section */}
+        <div className="mt-16 pt-8 border-t border-border">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="text-sm text-muted-foreground">
+              © {currentYear} TrekFinity Adventures. All rights reserved.
+            </div>
+            
+            {/* Legal Links */}
+            <div className="flex flex-wrap gap-6">
+              {links.legal.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  {link.name}
+                </a>
+              ))}
+            </div>
+          </div>
+          
+          <div className="mt-6 text-center">
+            <p className="text-sm text-muted-foreground">
+              Sustainable tourism • Supporting local communities • Protecting the environment
             </p>
           </div>
         </div>

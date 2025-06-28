@@ -1,6 +1,5 @@
-
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ChevronDown, Compass, Mountain, Users, MessageSquare } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -12,11 +11,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 50);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -34,12 +29,8 @@ const Navbar = () => {
   }, []);
 
   const toggleDropdown = (menu: string, e: React.MouseEvent) => {
-    e.stopPropagation(); // Prevent the document click handler from immediately closing the dropdown
-    if (activeDropdown === menu) {
-      setActiveDropdown(null);
-    } else {
-      setActiveDropdown(menu);
-    }
+    e.stopPropagation();
+    setActiveDropdown(activeDropdown === menu ? null : menu);
   };
 
   const closeMenu = () => {
@@ -51,7 +42,6 @@ const Navbar = () => {
     { 
       name: 'Treks', 
       href: '#treks',
-      icon: <Mountain className="w-4 h-4 text-indigo-400" />,
       dropdownItems: [
         { name: 'Everest Base Camp', href: '/treks/everest-base-camp' },
         { name: 'Annapurna Circuit', href: '/treks/annapurna-circuit' },
@@ -62,7 +52,6 @@ const Navbar = () => {
     { 
       name: 'Destinations', 
       href: '#destinations',
-      icon: <Compass className="w-4 h-4 text-teal-400" />,
       dropdownItems: [
         { name: 'Kathmandu', href: '/destinations/kathmandu' },
         { name: 'Pokhara', href: '/destinations/pokhara' },
@@ -70,66 +59,70 @@ const Navbar = () => {
         { name: 'Lumbini', href: '/destinations/lumbini' },
       ]
     },
-    { 
-      name: 'About', 
-      href: '/about',
-      icon: <Users className="w-4 h-4 text-lavender-400" />
-    },
-    { 
-      name: 'Testimonials', 
-      href: '/testimonials',
-      icon: <MessageSquare className="w-4 h-4 text-rose-400" />
-    },
+    { name: 'About', href: '/about' },
+    { name: 'Testimonials', href: '/testimonials' },
   ];
 
   return (
     <nav 
       className={cn(
         "fixed w-full z-50 transition-all duration-300",
-        isScrolled ? "backdrop-blur-lg bg-black/30 border-b border-white/10 py-3" : "bg-black/20 py-6"
+        isScrolled 
+          ? "bg-white/95 backdrop-blur-lg border-b border-border/40 py-4" 
+          : "bg-transparent py-6"
       )}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto container-padding">
         <div className="flex items-center justify-between">
-          <div className="flex items-center">
-            <Link to="/" className="flex items-center group">
-              <span className="font-playfair text-2xl font-bold tracking-tight text-white aesthetic-gradient">TrekTitan</span>
-            </Link>
-          </div>
+          {/* Logo */}
+          <Link to="/" className="flex items-center">
+            <span className={cn(
+              "text-2xl font-bold tracking-tight transition-colors",
+              isScrolled ? "text-foreground" : "text-white"
+            )}>
+              TrekFinity
+            </span>
+          </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
-              <div key={link.name} className="relative group">
+              <div key={link.name} className="relative">
                 {link.dropdownItems ? (
                   <button 
-                    className="flex items-center px-3 py-2 rounded-md bg-white/10 hover:bg-white/20 text-sm font-medium text-white transition-all duration-200 shadow-sm border border-white/20"
+                    className={cn(
+                      "flex items-center gap-1 text-sm font-medium transition-colors hover:opacity-75",
+                      isScrolled ? "text-foreground" : "text-white"
+                    )}
                     onClick={(e) => toggleDropdown(link.name, e)}
                     aria-expanded={activeDropdown === link.name}
-                    aria-haspopup="true"
                   >
-                    {link.icon}
-                    <span className="ml-1">{link.name}</span>
-                    <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", activeDropdown === link.name && "rotate-180")} />
+                    {link.name}
+                    <ChevronDown className={cn(
+                      "h-4 w-4 transition-transform", 
+                      activeDropdown === link.name && "rotate-180"
+                    )} />
                   </button>
                 ) : (
                   <Link 
                     to={link.href} 
-                    className="flex items-center px-3 py-2 rounded-md bg-white/10 hover:bg-white/20 text-sm font-medium text-white transition-all duration-200 shadow-sm border border-white/20"
+                    className={cn(
+                      "text-sm font-medium transition-colors hover:opacity-75",
+                      isScrolled ? "text-foreground" : "text-white"
+                    )}
                   >
-                    {link.icon}
-                    <span className="ml-1">{link.name}</span>
+                    {link.name}
                   </Link>
                 )}
                 
                 {link.dropdownItems && activeDropdown === link.name && (
-                  <div className="absolute left-0 mt-2 w-56 rounded-lg bg-white/10 backdrop-blur-xl border border-white/20 shadow-lg transition-premium animate-fade-in z-10">
-                    <div className="py-1">
+                  <div className="absolute left-0 top-full mt-2 w-48 bg-white rounded-lg border border-border/40 shadow-lg animate-fade-in">
+                    <div className="py-2">
                       {link.dropdownItems.map((item) => (
                         <Link
                           key={item.name}
                           to={item.href}
-                          className="block px-4 py-2 text-sm text-white hover:bg-white/10 rounded-md mx-1 my-1 transition-premium"
+                          className="block px-4 py-2 text-sm text-foreground hover:bg-accent rounded-md mx-2 my-1 transition-colors"
                           onClick={closeMenu}
                         >
                           {item.name}
@@ -142,8 +135,8 @@ const Navbar = () => {
             ))}
             
             <Button 
-              variant="taskbar"
-              className="text-sm font-medium shadow-lg bg-indigo-500 hover:bg-indigo-600 text-white border-indigo-400/30"
+              size="sm"
+              className="h-9 px-4 text-sm font-medium"
               asChild
             >
               <Link to="/contact">Book Now</Link>
@@ -151,50 +144,46 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Navigation Toggle */}
-          <div className="md:hidden">
-            <Button
-              variant="taskbar"
-              size="sm"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-expanded={isMenuOpen}
-              aria-label="Toggle menu"
-              className="p-2 rounded-md bg-white/10 text-white hover:bg-white/20 border border-white/20"
-            >
-              {isMenuOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
-            </Button>
-          </div>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className={cn(
+              "md:hidden p-2",
+              isScrolled ? "text-foreground hover:bg-accent" : "text-white hover:bg-white/10"
+            )}
+          >
+            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </Button>
         </div>
       </div>
 
       {/* Mobile Navigation Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-black/80 backdrop-blur-xl p-4 animate-fade-in border-t border-white/10">
-          <div className="flex flex-col space-y-3 pt-2 pb-4">
+        <div className="md:hidden bg-white border-t border-border/40 animate-fade-in">
+          <div className="container mx-auto container-padding py-4 space-y-4">
             {navLinks.map((link) => (
               <div key={link.name}>
                 {link.dropdownItems ? (
                   <div>
                     <button 
-                      className="flex items-center w-full text-left px-3 py-2 text-base font-medium text-white hover:bg-white/10 rounded-md transition-premium"
+                      className="flex items-center justify-between w-full text-left text-foreground font-medium py-2"
                       onClick={(e) => toggleDropdown(link.name, e)}
-                      aria-expanded={activeDropdown === link.name}
                     >
-                      {link.icon}
-                      <span className="ml-2">{link.name}</span>
-                      <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", activeDropdown === link.name && "rotate-180")} />
+                      {link.name}
+                      <ChevronDown className={cn(
+                        "h-4 w-4 transition-transform", 
+                        activeDropdown === link.name && "rotate-180"
+                      )} />
                     </button>
                     
                     {activeDropdown === link.name && (
-                      <div className="pl-4 mt-1 space-y-1 animate-fade-in">
+                      <div className="pl-4 mt-2 space-y-2 animate-fade-in">
                         {link.dropdownItems.map((item) => (
                           <Link
                             key={item.name}
                             to={item.href}
-                            className="block px-3 py-2 text-sm text-white/90 hover:bg-white/10 rounded-md transition-premium"
+                            className="block text-sm text-muted-foreground hover:text-foreground py-1 transition-colors"
                             onClick={closeMenu}
                           >
                             {item.name}
@@ -204,29 +193,22 @@ const Navbar = () => {
                     )}
                   </div>
                 ) : (
-                  <Link 
-                    to={link.href} 
-                    className="flex items-center px-3 py-2 text-base font-medium text-white hover:bg-white/10 rounded-md transition-premium"
+                  <Link
+                    to={link.href}
+                    className="block text-foreground font-medium py-2 hover:opacity-75 transition-opacity"
                     onClick={closeMenu}
                   >
-                    {link.icon}
-                    <span className="ml-2">{link.name}</span>
+                    {link.name}
                   </Link>
                 )}
               </div>
             ))}
-            <Button 
-              variant="taskbar"
-              className="mx-3 text-center bg-indigo-500 hover:bg-indigo-600 text-white border-indigo-400/30"
-              asChild
-            >
-              <Link 
-                to="/contact"
-                onClick={closeMenu}
-              >
-                Book Now
-              </Link>
-            </Button>
+            
+            <div className="pt-4 border-t border-border/40">
+              <Button className="w-full" asChild>
+                <Link to="/contact" onClick={closeMenu}>Book Now</Link>
+              </Button>
+            </div>
           </div>
         </div>
       )}

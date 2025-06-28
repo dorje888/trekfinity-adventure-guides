@@ -1,47 +1,9 @@
-
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { Quote, ChevronLeft, ChevronRight, Star } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const TestimonialsSection = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const elements = entry.target.querySelectorAll('.animate-reveal');
-            elements.forEach((el, i) => {
-              setTimeout(() => {
-                el.classList.add('revealed');
-              }, i * 150);
-            });
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
-
-  // Auto-rotate testimonials
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-    }, 8000);
-    
-    return () => clearInterval(interval);
-  }, []);
 
   const testimonials = [
     {
@@ -49,32 +11,36 @@ const TestimonialsSection = () => {
       name: "Sarah Johnson",
       location: "United Kingdom",
       image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80",
-      quote: "Our Everest Base Camp trek was nothing short of life-changing. Our guide Raj's knowledge of the area, culture, and mountaineering history added incredible depth to our journey. The way they handled everything from accommodations to altitude sickness made us feel safe and well-cared for throughout.",
-      rating: 5
+      quote: "Our Everest Base Camp trek was nothing short of life-changing. Our guide's knowledge of the area, culture, and mountaineering history added incredible depth to our journey.",
+      rating: 5,
+      trek: "Everest Base Camp"
     },
     {
       id: 2,
       name: "Michael Chen",
       location: "United States",
       image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80",
-      quote: "The Annapurna Circuit exceeded all my expectations. What sets Trekfinity apart is their attention to detail and the personal connections they've formed with locals along the routes. We had authentic experiences that felt far from the typical tourist path, all while enjoying excellent support from our guides.",
-      rating: 5
+      quote: "The Annapurna Circuit exceeded all my expectations. What sets TrekFinity apart is their attention to detail and the personal connections they've formed with locals.",
+      rating: 5,
+      trek: "Annapurna Circuit"
     },
     {
       id: 3,
       name: "Emma Rodriguez",
       location: "Australia",
       image: "https://images.unsplash.com/photo-1619895862022-09114b41f16f?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80",
-      quote: "As a solo female traveler, I was initially nervous about trekking in Nepal. Trekfinity made me feel secure and welcome from day one. My guide Pema was knowledgeable, professional, and became a friend along the way. The Langtang Valley trek was perfectly paced and absolutely stunning.",
-      rating: 5
+      quote: "As a solo female traveler, TrekFinity made me feel secure and welcome from day one. The Langtang Valley trek was perfectly paced and absolutely stunning.",
+      rating: 5,
+      trek: "Langtang Valley"
     },
     {
       id: 4,
       name: "Thomas Weber",
       location: "Germany",
       image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80",
-      quote: "Having trekked with several companies around the world, I can confidently say that Trekfinity offers the best combination of professionalism, local expertise, and value. The Manaslu Circuit was challenging but incredibly rewarding, and our guide's deep connection to the region made it special.",
-      rating: 5
+      quote: "Having trekked with several companies worldwide, I can confidently say TrekFinity offers the best combination of professionalism, local expertise, and value.",
+      rating: 5,
+      trek: "Manaslu Circuit"
     },
   ];
 
@@ -87,101 +53,149 @@ const TestimonialsSection = () => {
   };
 
   return (
-    <section id="testimonials" ref={sectionRef} className="py-24 bg-white overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="testimonials" className="section-padding bg-muted/30">
+      <div className="container mx-auto container-padding">
+        {/* Header */}
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <span className="inline-block animate-reveal py-1 px-3 mb-4 text-xs font-medium tracking-wider uppercase bg-mountain-100 text-mountain-800 rounded-full">
-            Client Experiences
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 animate-reveal">Memories That Last a Lifetime</h2>
-          <p className="text-lg text-gray-600 leading-relaxed animate-reveal">
-            Don't just take our word for it. Hear from travelers who have experienced 
-            the magic of Nepal through our carefully crafted adventures.
+          <div className="inline-flex items-center px-3 py-1 mb-6 text-sm font-medium bg-background rounded-full border">
+            Testimonials
+          </div>
+          <h2 className="text-section-title mb-6">
+            Stories from Our Adventurers
+          </h2>
+          <p className="text-body max-w-2xl mx-auto">
+            Hear from travelers who have experienced the magic of Nepal through 
+            our carefully crafted adventures and expert guidance.
           </p>
         </div>
 
-        <div className="relative max-w-5xl mx-auto">
-          <button 
-            onClick={handlePrev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 lg:-left-12 p-2 rounded-full bg-white shadow-lg text-gray-600 hover:text-primary hover:shadow-xl transition-premium focus:outline-none focus:ring-2 focus:ring-primary/20"
-            aria-label="Previous testimonial"
-          >
-            <ChevronLeft className="h-6 w-6" />
-          </button>
-
-          <button
-            onClick={handleNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 lg:-right-12 p-2 rounded-full bg-white shadow-lg text-gray-600 hover:text-primary hover:shadow-xl transition-premium focus:outline-none focus:ring-2 focus:ring-primary/20"
-            aria-label="Next testimonial"
-          >
-            <ChevronRight className="h-6 w-6" />
-          </button>
-
-          <div className="relative overflow-hidden rounded-2xl bg-white shadow-xl border border-gray-100">
-            {testimonials.map((testimonial, index) => (
-              <div
-                key={testimonial.id}
-                className={`absolute top-0 left-0 w-full transition-opacity duration-700 ease-in-out ${
-                  index === activeIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
-                }`}
-                style={{ 
-                  transitionDelay: index === activeIndex ? '200ms' : '0ms',
-                  pointerEvents: index === activeIndex ? 'auto' : 'none'
-                }}
-              >
-                <div className="grid grid-cols-1 md:grid-cols-5">
-                  <div className="md:col-span-2 overflow-hidden">
-                    <div className="aspect-square h-full w-full">
-                      <img 
-                        src={testimonial.image} 
-                        alt={testimonial.name} 
-                        className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+        {/* Featured Testimonial */}
+        <div className="max-w-5xl mx-auto">
+          <div className="modern-card overflow-hidden">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              {/* Image */}
+              <div className="lg:order-1">
+                <div className="aspect-square overflow-hidden">
+                  <img 
+                    src={testimonials[activeIndex].image} 
+                    alt={testimonials[activeIndex].name} 
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  />
+                </div>
+              </div>
+              
+              {/* Content */}
+              <div className="lg:col-span-2 lg:order-2 p-8 lg:p-12 flex flex-col justify-center">
+                <div className="mb-6">
+                  <Quote className="h-8 w-8 text-primary/60 mb-4" />
+                  <p className="text-lg leading-relaxed text-foreground mb-6">
+                    "{testimonials[activeIndex].quote}"
+                  </p>
+                </div>
+                
+                <div className="space-y-4">
+                  {/* Rating */}
+                  <div className="flex items-center gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Star 
+                        key={i} 
+                        className={`h-4 w-4 ${
+                          i < testimonials[activeIndex].rating ? 'text-yellow-500 fill-yellow-500' : 'text-muted-foreground'
+                        }`} 
                       />
-                    </div>
+                    ))}
                   </div>
                   
-                  <div className="md:col-span-3 p-6 md:p-10 flex flex-col justify-center">
-                    <div className="mb-4 text-primary/80">
-                      <Quote className="h-10 w-10" />
-                    </div>
-                    
-                    <p className="text-lg md:text-xl text-gray-700 mb-6 leading-relaxed italic">
-                      "{testimonial.quote}"
-                    </p>
-                    
-                    <div>
-                      <div className="flex mb-3">
-                        {[...Array(5)].map((_, i) => (
-                          <Star 
-                            key={i} 
-                            className={`h-5 w-5 ${
-                              i < testimonial.rating ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300'
-                            }`} 
-                          />
-                        ))}
-                      </div>
-                      
-                      <h4 className="text-xl font-bold text-gray-900">{testimonial.name}</h4>
-                      <p className="text-gray-600">{testimonial.location}</p>
-                    </div>
+                  {/* Author Info */}
+                  <div>
+                    <h4 className="font-semibold text-foreground">{testimonials[activeIndex].name}</h4>
+                    <p className="text-sm text-muted-foreground">{testimonials[activeIndex].location}</p>
+                    <p className="text-sm text-primary font-medium">{testimonials[activeIndex].trek}</p>
                   </div>
                 </div>
               </div>
-            ))}
+            </div>
           </div>
 
-          <div className="flex justify-center mt-8 space-x-2">
-            {testimonials.map((_, index) => (
+          {/* Navigation */}
+          <div className="flex items-center justify-between mt-8">
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={handlePrev}
+              className="h-10 w-10 rounded-full"
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </Button>
+
+            {/* Indicators */}
+            <div className="flex gap-2">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveIndex(index)}
+                  className={`w-2 h-2 rounded-full transition-all ${
+                    index === activeIndex 
+                      ? 'bg-primary w-8' 
+                      : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
+                  }`}
+                  aria-label={`View testimonial ${index + 1}`}
+                />
+              ))}
+            </div>
+
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={handleNext}
+              className="h-10 w-10 rounded-full"
+            >
+              <ChevronRight className="h-4 w-4" />
+            </Button>
+          </div>
+        </div>
+
+        {/* All Testimonials Grid */}
+        <div className="mt-24">
+          <h3 className="text-card-title text-center mb-12">All Reviews</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {testimonials.map((testimonial, index) => (
               <button
-                key={index}
+                key={testimonial.id}
                 onClick={() => setActiveIndex(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === activeIndex 
-                    ? 'bg-primary scale-125' 
-                    : 'bg-gray-300 hover:bg-gray-400'
+                className={`modern-card p-6 text-left transition-all ${
+                  index === activeIndex ? 'ring-2 ring-primary' : ''
                 }`}
-                aria-label={`View testimonial ${index + 1}`}
-              />
+              >
+                <div className="flex items-center gap-4 mb-4">
+                  <img 
+                    src={testimonial.image} 
+                    alt={testimonial.name}
+                    className="w-12 h-12 rounded-full object-cover"
+                  />
+                  <div>
+                    <h4 className="font-medium text-sm">{testimonial.name}</h4>
+                    <p className="text-xs text-muted-foreground">{testimonial.location}</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-center gap-1 mb-3">
+                  {[...Array(5)].map((_, i) => (
+                    <Star 
+                      key={i} 
+                      className={`h-3 w-3 ${
+                        i < testimonial.rating ? 'text-yellow-500 fill-yellow-500' : 'text-muted-foreground'
+                      }`} 
+                    />
+                  ))}
+                </div>
+                
+                <p className="text-sm text-muted-foreground line-clamp-3">
+                  "{testimonial.quote}"
+                </p>
+                
+                <p className="text-xs text-primary font-medium mt-3">{testimonial.trek}</p>
+              </button>
             ))}
           </div>
         </div>
