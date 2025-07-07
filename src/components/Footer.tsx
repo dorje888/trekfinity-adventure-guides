@@ -1,5 +1,5 @@
 import React from 'react';
-import { Facebook, Instagram, Twitter, MapPin, Phone, Mail, Mountain } from 'lucide-react';
+import { Facebook, Instagram, Twitter, MapPin, Phone, Mail } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -37,9 +37,16 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand Section */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-2 mb-6">
-              <Mountain className="h-6 w-6 text-primary" />
-              <span className="text-xl font-bold text-foreground">TrekFinity</span>
+            <div className="flex items-center gap-3 mb-6">
+              <img 
+                src="/lovable-uploads/3042a073-2741-4abb-a098-23af3d0f755d.png" 
+                alt="Yoga Nepal Mountain Trek & Expedition Logo" 
+                className="h-10 w-10 object-contain"
+              />
+              <span className="text-lg font-bold text-foreground leading-tight">
+                Yoga Nepal Mountain Trek<br />
+                <span className="text-sm font-medium opacity-90">& Expedition</span>
+              </span>
             </div>
             <p className="text-muted-foreground mb-6 leading-relaxed">
               Discover Nepal's majestic Himalayas with expert local guides. 
@@ -121,8 +128,8 @@ const Footer = () => {
               <div className="flex items-start gap-3">
                 <Mail className="h-4 w-4 text-muted-foreground mt-0.5 flex-shrink-0" />
                 <div className="text-sm text-muted-foreground">
-                  <div>info@trekfinity.com</div>
-                  <div>bookings@trekfinity.com</div>
+                  <div>info@yoganepaltreks.com</div>
+                  <div>bookings@yoganepaltreks.com</div>
                 </div>
               </div>
             </div>
@@ -133,7 +140,7 @@ const Footer = () => {
         <div className="mt-16 pt-8 border-t border-border">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-sm text-muted-foreground">
-              © {currentYear} TrekFinity Adventures. All rights reserved.
+              © {currentYear} Yoga Nepal Mountain Trek & Expedition. All rights reserved.
             </div>
             
             {/* Legal Links */}

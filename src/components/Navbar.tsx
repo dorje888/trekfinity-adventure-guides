@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -75,12 +76,18 @@ const Navbar = () => {
       <div className="container mx-auto container-padding">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center">
+          <Link to="/" className="flex items-center gap-3">
+            <img 
+              src="/lovable-uploads/3042a073-2741-4abb-a098-23af3d0f755d.png" 
+              alt="Yoga Nepal Mountain Trek & Expedition Logo" 
+              className="h-12 w-12 object-contain"
+            />
             <span className={cn(
-              "text-2xl font-bold tracking-tight transition-colors",
+              "text-lg font-bold tracking-tight transition-colors leading-tight",
               isScrolled ? "text-foreground" : "text-white"
             )}>
-              TrekFinity
+              Yoga Nepal Mountain Trek<br />
+              <span className="text-sm font-medium opacity-90">& Expedition</span>
             </span>
           </Link>
 
