@@ -15,6 +15,8 @@ import EverestBaseCamp from "./pages/treks/EverestBaseCamp";
 import AnnapurnaCircuit from "./pages/treks/AnnapurnaCircuit";
 import LangtangValley from "./pages/treks/LangtangValley";
 import ManasluCircuit from "./pages/treks/ManasluCircuit";
+import UpperMustang from "./pages/treks/UpperMustang";
+import GokyoLakes from "./pages/treks/GokyoLakes";
 
 // Destination Pages
 import Kathmandu from "./pages/destinations/Kathmandu";
@@ -38,6 +40,8 @@ const App = () => (
           <Route path="/treks/annapurna-circuit" element={<AnnapurnaCircuit />} />
           <Route path="/treks/langtang-valley" element={<LangtangValley />} />
           <Route path="/treks/manaslu-circuit" element={<ManasluCircuit />} />
+          <Route path="/treks/upper-mustang" element={<UpperMustang />} />
+          <Route path="/treks/gokyo-lakes" element={<GokyoLakes />} />
           
           {/* Destination Routes */}
           <Route path="/destinations/kathmandu" element={<Kathmandu />} />

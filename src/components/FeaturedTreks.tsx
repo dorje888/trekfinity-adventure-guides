@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import { ArrowRight, Calendar, Clock, Users, Mountain } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import everestBaseCampImage from '@/assets/everest-base-camp.jpg';
+import annapurnaCircuitImage from '@/assets/annapurna-circuit.jpg';
+import langtangValleyImage from '@/assets/langtang-valley.jpg';
+import manasluCircuitImage from '@/assets/manaslu-circuit.jpg';
+import upperMustangImage from '@/assets/upper-mustang.jpg';
+import gokyoLakesImage from '@/assets/gokyo-lakes.jpg';
 
 const FeaturedTreks = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -9,47 +15,81 @@ const FeaturedTreks = () => {
     {
       id: 1,
       title: "Everest Base Camp",
-      image: "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=80",
-      description: "Walk in the footsteps of legends to the base of the world's highest peak. Experience breathtaking mountain vistas and immerse yourself in authentic Sherpa culture.",
+      image: everestBaseCampImage,
+      description: "Walk in the footsteps of legends to the base of the world's highest peak at 5,364m. Experience breathtaking mountain vistas, visit centuries-old monasteries, and immerse yourself in authentic Sherpa culture. This iconic trek passes through Sagarmatha National Park, a UNESCO World Heritage site, offering unparalleled views of Everest, Lhotse, Nuptse, and Ama Dablam.",
       duration: "14 days",
       difficulty: "Challenging",
       groupSize: "2-12",
       elevation: "5,364m",
-      route: "/treks/everest-base-camp"
+      route: "/treks/everest-base-camp",
+      highlights: ["Namche Bazaar - Sherpa capital", "Tengboche Monastery", "Kala Patthar viewpoint", "Everest Base Camp"],
+      bestSeason: "March-May, September-November"
     },
     {
       id: 2,
       title: "Annapurna Circuit",
-      image: "https://images.unsplash.com/photo-1504893524553-b855bce32c67?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=80",
-      description: "Journey through diverse landscapes from lush forests to arid high-altitude deserts. Cross the challenging Thorong La Pass and witness stunning Annapurna views.",
+      image: annapurnaCircuitImage,
+      description: "Journey through Nepal's most diverse trekking route, crossing the dramatic Thorong La Pass at 5,416m. Experience everything from subtropical forests and terraced fields to arid high-altitude deserts and glacial valleys. This classic trek offers stunning views of Annapurna, Dhaulagiri, Machapuchare, and Manaslu ranges while passing through traditional Gurung and Thakali villages.",
       duration: "18 days",
       difficulty: "Moderate to Challenging",
       groupSize: "2-10",
       elevation: "5,416m",
-      route: "/treks/annapurna-circuit"
+      route: "/treks/annapurna-circuit",
+      highlights: ["Thorong La Pass", "Muktinath Temple", "Manang village", "Diverse ecosystems"],
+      bestSeason: "March-May, September-November"
     },
     {
       id: 3,
       title: "Langtang Valley",
-      image: "https://images.unsplash.com/photo-1426604966848-d7adac402bff?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=80",
-      description: "Explore the beautiful Langtang Valley with its unique blend of Himalayan and Tibetan cultures. Enjoy stunning peaks and lush rhododendron forests.",
+      image: langtangValleyImage,
+      description: "Discover the 'Valley of Glaciers' with its unique blend of Himalayan and Tibetan cultures. Trek through Langtang National Park, home to red pandas and diverse flora including rhododendron forests. Experience traditional Tamang villages, visit ancient monasteries, and enjoy close-up views of Langtang Lirung (7,227m) and other spectacular peaks.",
       duration: "10 days",
       difficulty: "Moderate",
       groupSize: "2-8",
       elevation: "4,984m",
-      route: "/treks/langtang-valley"
+      route: "/treks/langtang-valley",
+      highlights: ["Kyanjin Gompa monastery", "Langtang Lirung views", "Tamang culture", "Red panda habitat"],
+      bestSeason: "March-May, September-November"
     },
     {
       id: 4,
       title: "Manaslu Circuit",
-      image: "https://images.unsplash.com/photo-1458668383970-8ddd3927deed?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=80",
-      description: "Trek around the world's eighth highest mountain on this less-traveled circuit. Experience authentic village life and dramatic mountain scenery.",
+      image: manasluCircuitImage,
+      description: "Trek around the world's eighth highest mountain (8,163m) on this spectacular yet less-crowded circuit. Cross the challenging Larkya La Pass at 5,106m while experiencing authentic mountain culture in traditional villages. This restricted area trek offers pristine wilderness, ancient monasteries, and dramatic mountain scenery including close views of Manaslu, Himalchuli, and Cheo Himal.",
       duration: "16 days",
       difficulty: "Challenging",
       groupSize: "2-8",
       elevation: "5,106m",
-      route: "/treks/manaslu-circuit"
+      route: "/treks/manaslu-circuit",
+      highlights: ["Larkya La Pass", "Samagaon village", "Manaslu views", "Restricted area permit"],
+      bestSeason: "March-May, September-November"
     },
+    {
+      id: 5,
+      title: "Upper Mustang",
+      image: upperMustangImage,
+      description: "Explore the forbidden kingdom of Mustang, a mystical high-altitude desert that was once an independent Tibetan kingdom. Trek through dramatic canyons, ancient caves, and medieval walled cities including Lo Manthang, the capital. Experience authentic Tibetan Buddhist culture, visit centuries-old monasteries, and witness unique landscapes that resemble the Tibetan plateau.",
+      duration: "12 days",
+      difficulty: "Moderate",
+      groupSize: "2-10",
+      elevation: "4,000m",
+      route: "/treks/upper-mustang",
+      highlights: ["Lo Manthang palace", "Ancient cave monasteries", "Tibetan culture", "Desert landscapes"],
+      bestSeason: "March-November"
+    },
+    {
+      id: 6,
+      title: "Gokyo Lakes",
+      image: gokyoLakesImage,
+      description: "Trek to the stunning turquoise Gokyo Lakes, the world's highest freshwater lake system, situated at 4,700-5,000m altitude. Climb Gokyo Ri (5,357m) for panoramic views of four of the world's six highest peaks: Everest, Lhotse, Makalu, and Cho Oyu. Experience the pristine beauty of the Everest region while avoiding the crowds of the traditional EBC route.",
+      duration: "12 days",
+      difficulty: "Moderate to Challenging",
+      groupSize: "2-10",
+      elevation: "5,357m",
+      route: "/treks/gokyo-lakes",
+      highlights: ["Six sacred lakes", "Gokyo Ri summit", "Four 8000m+ peaks view", "Ngozumpa Glacier"],
+      bestSeason: "March-May, September-November"
+    }
   ];
 
   const stats = [
