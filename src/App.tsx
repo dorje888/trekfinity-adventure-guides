@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound";
 import AboutPage from "./pages/AboutPage";
 import TestimonialsPage from "./pages/TestimonialsPage";
 import Contact from "./pages/Contact";
+import Registration from "./pages/Registration";
 
 // Trek Pages
 import EverestBaseCamp from "./pages/treks/EverestBaseCamp";
@@ -53,6 +54,7 @@ const App = () => (
           <Route path="/about" element={<AboutPage />} />
           <Route path="/testimonials" element={<TestimonialsPage />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/registration" element={<Registration />} />
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
