@@ -3,16 +3,25 @@ import { ArrowRight, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const HeroSection = () => {
+  // Dev cache buster so changes reflect immediately during development
+  const bust = import.meta.env.DEV ? `?v=${Date.now()}` : '';
+  // Revert to the shared homepage hero image
+  const heroUploaded = `/lovable-uploads/image.png${bust}`;
+
   return (
     <div className="relative w-full h-screen overflow-hidden">
       {/* Background Image with Minimal Overlay */}
       <div 
-        className="absolute inset-0 w-full h-full bg-cover bg-center"
+        className="absolute inset-0 w-full h-full bg-cover bg-no-repeat animate-kenburns-slow"
         style={{ 
-          backgroundImage: 'url(https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2600&q=80)',
+          backgroundImage: `url(${heroUploaded})`,
+          backgroundPosition: 'center center',
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+          backgroundColor: '#0a0a0a',
         }}
       >
-        <div className="absolute inset-0 bg-black/50" />
+        <div className="absolute inset-0 bg-black/45" />
       </div>
       
       {/* Content */}

@@ -308,6 +308,18 @@ export default {
 				'shimmer-elegant': {
 					'0%': { backgroundPosition: '-200% 0' },
 					'100%': { backgroundPosition: '200% 0' }
+				},
+				kenburns: {
+					'0%': { transform: 'scale(1.05) translateY(0)' },
+					'100%': { transform: 'scale(1.15) translateY(-2%)' }
+				},
+				kenburnsSoft: {
+					'0%': { transform: 'scale(1.02)' },
+					'100%': { transform: 'scale(1.08)' }
+				},
+				kenburnsBg: {
+					'0%': { backgroundSize: '100% 100%' },
+					'100%': { backgroundSize: '110% 110%' }
 				}
 			},
 			animation: {
@@ -331,6 +343,9 @@ export default {
 				'soft-pulse': 'soft-pulse 4s ease-in-out infinite',
 				'soft-float': 'soft-float 6s ease-in-out infinite',
 				'shimmer-elegant': 'shimmer-elegant 3s infinite linear',
+				'kenburns-slow': 'kenburns 22s ease-in-out infinite alternate',
+				'kenburns-soft': 'kenburnsSoft 18s ease-in-out infinite alternate',
+				'kenburns-bg': 'kenburnsBg 22s ease-in-out infinite alternate',
 			},
 		}
 	},

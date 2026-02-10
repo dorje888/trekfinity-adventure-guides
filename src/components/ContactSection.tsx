@@ -94,7 +94,7 @@ const ContactSection = () => {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                  <label htmlFor="name" className="block text-sm font-medium text-[#6F60A1] mb-2">
                     Full Name *
                   </label>
                   <input
@@ -104,13 +104,13 @@ const ContactSection = () => {
                     value={formState.name}
                     onChange={handleChange}
                     required
-                    className="modern-input"
+                    className="w-full px-6 py-3 bg-[#DCD6EB] text-[#4B3F73] rounded-full border-0 focus:ring-2 focus:ring-[#7E6DB0]/40 focus:outline-none placeholder:text-[#6F60A1]/70"
                     placeholder="Your name"
                   />
                 </div>
                 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                  <label htmlFor="email" className="block text-sm font-medium text-[#6F60A1] mb-2">
                     Email Address *
                   </label>
                   <input
@@ -120,7 +120,7 @@ const ContactSection = () => {
                     value={formState.email}
                     onChange={handleChange}
                     required
-                    className="modern-input"
+                    className="w-full px-6 py-3 bg-[#DCD6EB] text-[#4B3F73] rounded-full border-0 focus:ring-2 focus:ring-[#7E6DB0]/40 focus:outline-none placeholder:text-[#6F60A1]/70"
                     placeholder="your@email.com"
                   />
                 </div>
@@ -128,7 +128,7 @@ const ContactSection = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
+                  <label htmlFor="phone" className="block text-sm font-medium text-[#6F60A1] mb-2">
                     Phone Number
                   </label>
                   <input
@@ -137,13 +137,13 @@ const ContactSection = () => {
                     name="phone"
                     value={formState.phone}
                     onChange={handleChange}
-                    className="modern-input"
+                    className="w-full px-6 py-3 bg-[#DCD6EB] text-[#4B3F73] rounded-full border-0 focus:ring-2 focus:ring-[#7E6DB0]/40 focus:outline-none placeholder:text-[#6F60A1]/70"
                     placeholder="+1 (555) 123-4567"
                   />
                 </div>
                 
                 <div>
-                  <label htmlFor="date" className="block text-sm font-medium text-foreground mb-2">
+                  <label htmlFor="date" className="block text-sm font-medium text-[#6F60A1] mb-2">
                     Preferred Date
                   </label>
                   <input
@@ -152,14 +152,14 @@ const ContactSection = () => {
                     name="date"
                     value={formState.date}
                     onChange={handleChange}
-                    className="modern-input"
+                    className="w-full px-6 py-3 bg-[#DCD6EB] text-[#4B3F73] rounded-full border-0 focus:ring-2 focus:ring-[#7E6DB0]/40 focus:outline-none"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="trek" className="block text-sm font-medium text-foreground mb-2">
+                  <label htmlFor="trek" className="block text-sm font-medium text-[#6F60A1] mb-2">
                     Interested Trek
                   </label>
                   <select
@@ -167,7 +167,7 @@ const ContactSection = () => {
                     name="trek"
                     value={formState.trek}
                     onChange={handleChange}
-                    className="modern-input"
+                    className="w-full px-6 py-3 bg-[#DCD6EB] text-[#4B3F73] rounded-full border-0 focus:ring-2 focus:ring-[#7E6DB0]/40 focus:outline-none"
                   >
                     <option value="Everest Base Camp">Everest Base Camp</option>
                     <option value="Annapurna Circuit">Annapurna Circuit</option>
@@ -180,7 +180,7 @@ const ContactSection = () => {
                 </div>
                 
                 <div>
-                  <label htmlFor="groupSize" className="block text-sm font-medium text-foreground mb-2">
+                  <label htmlFor="groupSize" className="block text-sm font-medium text-[#6F60A1] mb-2">
                     Group Size
                   </label>
                   <select
@@ -188,7 +188,7 @@ const ContactSection = () => {
                     name="groupSize"
                     value={formState.groupSize}
                     onChange={handleChange}
-                    className="modern-input"
+                    className="w-full px-6 py-3 bg-[#DCD6EB] text-[#4B3F73] rounded-full border-0 focus:ring-2 focus:ring-[#7E6DB0]/40 focus:outline-none"
                   >
                     <option value="1">Solo (1 person)</option>
                     <option value="2">Couple (2 people)</option>
@@ -200,7 +200,7 @@ const ContactSection = () => {
               </div>
               
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="message" className="block text-sm font-medium text-[#6F60A1] mb-2">
                   Message
                 </label>
                 <textarea
@@ -209,7 +209,7 @@ const ContactSection = () => {
                   value={formState.message}
                   onChange={handleChange}
                   rows={4}
-                  className="modern-input resize-none"
+                  className="w-full px-6 py-4 bg-[#DCD6EB] text-[#4B3F73] rounded-2xl border-0 focus:ring-2 focus:ring-[#7E6DB0]/40 focus:outline-none placeholder:text-[#6F60A1]/70 resize-none"
                   placeholder="Tell us about your adventure goals, experience level, or any special requirements..."
                 />
               </div>
@@ -217,7 +217,7 @@ const ContactSection = () => {
               <Button 
                 type="submit" 
                 disabled={isSubmitting}
-                className="w-full h-12"
+                className="w-full h-11 rounded-full bg-[#7E6DB0] hover:bg-[#6F60A1] text-white"
               >
                 {isSubmitting ? (
                   <>

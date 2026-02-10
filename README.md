@@ -67,3 +67,21 @@ Simply open [Lovable](https://lovable.dev/projects/51ba6f3e-aee7-4c9f-be33-a324c
 ## I want to use a custom domain - is that possible?
 
 We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+
+## Local API + Postgres setup
+
+This project can run with a local Express API backed by PostgreSQL.
+
+1. Start PostgreSQL locally and create a database, for example `trekfinity`.
+2. Configure the API:
+   - Copy `server/.env.example` to `server/.env` and set `DATABASE_URL`.
+3. Install dependencies:
+   - In the root: `pnpm install`
+   - In `server/`: `pnpm install`
+4. Run DB migration (creates the `bookings` table):
+   - `pnpm --dir server migrate`
+5. Start both API and web app in dev:
+   - `pnpm dev:full`
+   - The client will proxy `/api` to the API at `http://localhost:3001`.
+
+The Registration form will POST to `/api/registrations` and save rows into the `bookings` table.

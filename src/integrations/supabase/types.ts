@@ -266,182 +266,73 @@ export type Database = {
           },
         ]
       }
-      notifications: {
+      destinations: {
         Row: {
-          auction_id: string | null
+          slug: string
+          name: string
+          subtitle: string | null
+          hero_local: string | null
+          hero_remote: string | null
           created_at: string
-          id: string
-          message: string
-          read: boolean
-          title: string
-          type: string
-          user_id: string
         }
         Insert: {
-          auction_id?: string | null
+          slug: string
+          name: string
+          subtitle?: string | null
+          hero_local?: string | null
+          hero_remote?: string | null
           created_at?: string
-          id?: string
-          message: string
-          read?: boolean
-          title: string
-          type: string
-          user_id: string
         }
         Update: {
-          auction_id?: string | null
+          slug?: string
+          name?: string
+          subtitle?: string | null
+          hero_local?: string | null
+          hero_remote?: string | null
           created_at?: string
-          id?: string
-          message?: string
-          read?: boolean
-          title?: string
-          type?: string
-          user_id?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "notifications_auction_id_fkey"
-            columns: ["auction_id"]
-            isOneToOne: false
-            referencedRelation: "auctions"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      payments: {
-        Row: {
-          amount: number
-          auction_id: string
-          buyer_id: string
-          created_at: string
-          deadline: string
-          id: string
-          payment_method: string | null
-          seller_id: string
-          status: string
-          stripe_payment_id: string | null
-          updated_at: string
-        }
-        Insert: {
-          amount: number
-          auction_id: string
-          buyer_id: string
-          created_at?: string
-          deadline: string
-          id?: string
-          payment_method?: string | null
-          seller_id: string
-          status?: string
-          stripe_payment_id?: string | null
-          updated_at?: string
-        }
-        Update: {
-          amount?: number
-          auction_id?: string
-          buyer_id?: string
-          created_at?: string
-          deadline?: string
-          id?: string
-          payment_method?: string | null
-          seller_id?: string
-          status?: string
-          stripe_payment_id?: string | null
-          updated_at?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "payments_auction_id_fkey"
-            columns: ["auction_id"]
-            isOneToOne: false
-            referencedRelation: "auctions"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      profiles: {
-        Row: {
-          avatar_url: string | null
-          created_at: string
-          full_name: string | null
-          id: string
-          updated_at: string
-        }
-        Insert: {
-          avatar_url?: string | null
-          created_at?: string
-          full_name?: string | null
-          id: string
-          updated_at?: string
-        }
-        Update: {
-          avatar_url?: string | null
-          created_at?: string
-          full_name?: string | null
-          id?: string
-          updated_at?: string
         }
         Relationships: []
       }
-      reviews: {
+      destination_attractions: {
         Row: {
-          auction_id: string
-          comment: string | null
-          created_at: string
           id: string
-          rating: number
-          reviewed_user_id: string
-          reviewer_id: string
-          type: string
+          destination_slug: string
+          name: string
+          description: string
+          image_local: string | null
+          image_remote: string | null
+          sort_order: number | null
+          created_at: string
         }
         Insert: {
-          auction_id: string
-          comment?: string | null
-          created_at?: string
           id?: string
-          rating: number
-          reviewed_user_id: string
-          reviewer_id: string
-          type: string
+          destination_slug: string
+          name: string
+          description: string
+          image_local?: string | null
+          image_remote?: string | null
+          sort_order?: number | null
+          created_at?: string
         }
         Update: {
-          auction_id?: string
-          comment?: string | null
-          created_at?: string
           id?: string
-          rating?: number
-          reviewed_user_id?: string
-          reviewer_id?: string
-          type?: string
+          destination_slug?: string
+          name?: string
+          description?: string
+          image_local?: string | null
+          image_remote?: string | null
+          sort_order?: number | null
+          created_at?: string
         }
         Relationships: [
           {
-            foreignKeyName: "reviews_auction_id_fkey"
-            columns: ["auction_id"]
-            isOneToOne: false
-            referencedRelation: "auctions"
-            referencedColumns: ["id"]
+            foreignKeyName: "destination_attractions_destination_slug_fkey",
+            columns: ["destination_slug"],
+            isOneToOne: false,
+            referencedRelation: "destinations",
+            referencedColumns: ["slug"]
           },
         ]
-      }
-      user_roles: {
-        Row: {
-          created_at: string
-          id: string
-          role: Database["public"]["Enums"]["app_role"]
-          user_id: string
-        }
-        Insert: {
-          created_at?: string
-          id?: string
-          role?: Database["public"]["Enums"]["app_role"]
-          user_id: string
-        }
-        Update: {
-          created_at?: string
-          id?: string
-          role?: Database["public"]["Enums"]["app_role"]
-          user_id?: string
-        }
-        Relationships: []
       }
     }
     Views: {

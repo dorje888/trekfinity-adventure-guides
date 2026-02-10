@@ -1,24 +1,51 @@
-
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { ArrowRight, Calendar, Clock, Users, Mountain, MapPin, Compass } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from '@/components/ui/carousel';
 
 const AnnapurnaCircuit = () => {
+  // Dev cache buster
+  const bust = import.meta.env.DEV ? `?v=${Date.now()}` : '';
+  const annapurnaImages = [
+    '/Annapurna/francesca-varisco-r7IBk3kt5hc-unsplash.jpg',
+    '/Annapurna/neha-maheen-mahfin-_sbkVaT19ko-unsplash.jpg',
+    '/Annapurna/sanjay-hona-qAA6INniUNg-unsplash.jpg',
+    '/Annapurna/touann-gatouillat-vergos-QFY3Tv5_12M-unsplash.jpg',
+  ].map((p) => `${p}${bust}`);
+  const [api, setApi] = React.useState<CarouselApi | null>(null);
+  React.useEffect(() => {
+    if (!api) return;
+    const id = setInterval(() => api.scrollNext(), 3500);
+    return () => clearInterval(id);
+  }, [api]);
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
       
       <div className="pt-20">
-        {/* Hero Section */}
+        {/* Hero Section - auto sliding images */}
         <div className="relative h-[70vh] overflow-hidden">
-          <div className="absolute inset-0 bg-black/30 z-10"></div>
-          <img 
-            src="https://images.unsplash.com/photo-1504893524553-b855bce32c67?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=80" 
-            alt="Annapurna Circuit Trek" 
-            className="absolute inset-0 w-full h-full object-cover"
-          />
+          {/* Carousel Underlay */}
+          <Carousel className="absolute inset-0 z-0" opts={{ loop: true }} setApi={setApi}>
+            <CarouselContent className="h-full">
+              {annapurnaImages.map((src, idx) => (
+                <CarouselItem key={idx} className="h-[70vh] relative">
+                  <img
+                    src={src}
+                    alt={`Annapurna gallery image ${idx + 1}`}
+                    className="absolute inset-0 w-full h-full object-cover"
+                    loading={idx === 0 ? 'eager' : 'lazy'}
+                  />
+                  <div className="absolute inset-0 bg-black/30" />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+
+          {/* Content overlay */}
           <div className="absolute inset-0 z-20 flex items-center justify-center">
             <div className="text-center text-white max-w-4xl px-4">
               <h1 className="text-4xl md:text-6xl font-bold mb-6">Annapurna Circuit Trek</h1>
@@ -92,7 +119,7 @@ const AnnapurnaCircuit = () => {
               </div>
               
               <div>
-                <div className="bg-white rounded-xl p-6 shadow-subtle mb-8">
+                <div className="bg-white rounded-xl p-6 shadow-md border border-gray-200 mb-8">
                   <h3 className="text-xl font-bold text-gray-900 mb-4">Trek Details</h3>
                   
                   <div className="space-y-4">
@@ -162,7 +189,7 @@ const AnnapurnaCircuit = () => {
                     <p className="text-gray-600 text-sm mb-4">per person (min. 2 people)</p>
                     <Link 
                       to="#book-now" 
-                      className="w-full inline-flex justify-center items-center gap-2 px-6 py-3 bg-primary text-white rounded-md font-medium hover:bg-primary/90 transition-premium"
+                      className="w-full inline-flex justify-center items-center gap-2 px-6 py-3 bg-primary text-white rounded-md font-medium hover:bg-primary/90 transition"
                     >
                       Book Now
                       <ArrowRight className="w-4 h-4" />
@@ -179,40 +206,40 @@ const AnnapurnaCircuit = () => {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Book Your Annapurna Circuit Trek</h2>
-              <div className="bg-white rounded-xl p-8 shadow-lg">
+              <div className="bg-white rounded-xl p-8 shadow-md border border-gray-200">
                 <form className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                      <label htmlFor="name" className="block text-sm font-medium text-[#6F60A1] mb-1">Full Name</label>
                       <input 
                         type="text" 
                         id="name" 
-                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:outline-none"
+                        className="w-full px-6 py-3 bg-[#DCD6EB] text-[#4B3F73] rounded-full border-0 focus:ring-2 focus:ring-[#7E6DB0]/40 focus:outline-none placeholder:text-[#6F60A1]/70"
                         placeholder="Your full name"
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                      <label htmlFor="email" className="block text-sm font-medium text-[#6F60A1] mb-1">Email Address</label>
                       <input 
                         type="email" 
                         id="email" 
-                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:outline-none"
+                        className="w-full px-6 py-3 bg-[#DCD6EB] text-[#4B3F73] rounded-full border-0 focus:ring-2 focus:ring-[#7E6DB0]/40 focus:outline-none placeholder:text-[#6F60A1]/70"
                         placeholder="your@email.com"
                       />
                     </div>
                     <div>
-                      <label htmlFor="trekDate" className="block text-sm font-medium text-gray-700 mb-1">Preferred Trek Date</label>
+                      <label htmlFor="trekDate" className="block text-sm font-medium text-[#6F60A1] mb-1">Preferred Trek Date</label>
                       <input 
                         type="date" 
                         id="trekDate" 
-                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:outline-none"
+                        className="w-full px-6 py-3 bg-[#DCD6EB] text-[#4B3F73] rounded-full border-0 focus:ring-2 focus:ring-[#7E6DB0]/40 focus:outline-none"
                       />
                     </div>
                     <div>
-                      <label htmlFor="groupSize" className="block text-sm font-medium text-gray-700 mb-1">Group Size</label>
+                      <label htmlFor="groupSize" className="block text-sm font-medium text-[#6F60A1] mb-1">Group Size</label>
                       <select 
                         id="groupSize" 
-                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:outline-none"
+                        className="w-full px-6 py-3 bg-[#DCD6EB] text-[#4B3F73] rounded-full border-0 focus:ring-2 focus:ring-[#7E6DB0]/40 focus:outline-none"
                       >
                         <option value="1">1 person</option>
                         <option value="2">2 people</option>
@@ -224,18 +251,18 @@ const AnnapurnaCircuit = () => {
                   </div>
                   
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Special Requirements or Questions</label>
+                    <label htmlFor="message" className="block text-sm font-medium text-[#6F60A1] mb-1">Special Requirements or Questions</label>
                     <textarea 
                       id="message" 
                       rows={4} 
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:outline-none"
+                      className="w-full px-6 py-4 bg-[#DCD6EB] text-[#4B3F73] rounded-2xl border-0 focus:ring-2 focus:ring-[#7E6DB0]/40 focus:outline-none placeholder:text-[#6F60A1]/70"
                       placeholder="Tell us about any special requirements or questions you may have..."
                     ></textarea>
                   </div>
                   
                   <button 
                     type="submit" 
-                    className="w-full inline-flex justify-center items-center gap-2 px-6 py-3 bg-primary text-white rounded-md font-medium hover:bg-primary/90 transition-premium"
+                    className="w-full inline-flex justify-center items-center gap-2 px-6 h-11 bg-[#7E6DB0] hover:bg-[#6F60A1] text-white rounded-full font-medium transition"
                   >
                     Submit Booking Request
                     <ArrowRight className="w-4 h-4" />

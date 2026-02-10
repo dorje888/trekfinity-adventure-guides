@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Quote, ChevronLeft, ChevronRight, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import ReviewForm from '@/components/reviews/ReviewForm';
+import ReviewList from '@/components/reviews/ReviewList';
 
 const TestimonialsSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -20,7 +22,7 @@ const TestimonialsSection = () => {
       name: "Michael Chen",
       location: "United States",
       image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80",
-      quote: "The Annapurna Circuit exceeded all my expectations. What sets TrekFinity apart is their attention to detail and the personal connections they've formed with locals.",
+      quote: "The Annapurna Circuit exceeded all my expectations. What sets Calm Trek apart is their attention to detail and the personal connections they've formed with locals.",
       rating: 5,
       trek: "Annapurna Circuit"
     },
@@ -29,7 +31,7 @@ const TestimonialsSection = () => {
       name: "Emma Rodriguez",
       location: "Australia",
       image: "https://images.unsplash.com/photo-1619895862022-09114b41f16f?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80",
-      quote: "As a solo female traveler, TrekFinity made me feel secure and welcome from day one. The Langtang Valley trek was perfectly paced and absolutely stunning.",
+      quote: "As a solo female traveler, Calm Trek made me feel secure and welcome from day one. The Langtang Valley trek was perfectly paced and absolutely stunning.",
       rating: 5,
       trek: "Langtang Valley"
     },
@@ -38,7 +40,7 @@ const TestimonialsSection = () => {
       name: "Thomas Weber",
       location: "Germany",
       image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80",
-      quote: "Having trekked with several companies worldwide, I can confidently say TrekFinity offers the best combination of professionalism, local expertise, and value.",
+      quote: "Having trekked with several companies worldwide, I can confidently say Calm Trek offers the best combination of professionalism, local expertise, and value.",
       rating: 5,
       trek: "Manaslu Circuit"
     },
@@ -155,9 +157,25 @@ const TestimonialsSection = () => {
           </div>
         </div>
 
-        {/* All Testimonials Grid */}
+        {/* Community Reviews: dynamic list + submission form */}
         <div className="mt-24">
-          <h3 className="text-card-title text-center mb-12">All Reviews</h3>
+          <h3 className="text-card-title text-center mb-12">Community Reviews</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <ReviewList />
+            </div>
+            <div>
+              <div className="modern-card p-6">
+                <ReviewForm />
+                <p className="mt-2 text-xs text-muted-foreground">Email is required to submit. Reviews appear after admin approval.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* All Testimonials Grid (featured quick nav) */}
+        <div className="mt-24">
+          <h3 className="text-card-title text-center mb-12">Featured Highlights</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {testimonials.map((testimonial, index) => (
               <button

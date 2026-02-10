@@ -1,102 +1,117 @@
 import React, { useState } from 'react';
 import { ArrowRight, Calendar, Clock, Users, Mountain } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import everestBaseCampImage from '@/assets/everest-base-camp.jpg';
-import annapurnaCircuitImage from '@/assets/annapurna-circuit.jpg';
-import langtangValleyImage from '@/assets/langtang-valley.jpg';
-import manasluCircuitImage from '@/assets/manaslu-circuit.jpg';
-import upperMustangImage from '@/assets/upper-mustang.jpg';
-import gokyoLakesImage from '@/assets/gokyo-lakes.jpg';
+import upperMustangImg from '@/assets/upper-mustang.jpg';
+import gokyoImg from '@/assets/gokyo-lakes.jpg';
 
 const FeaturedTreks = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
+  // Dev cache buster so public images update during development
+  const bust = import.meta.env.DEV ? `?v=${Date.now()}` : '';
+
   const treks = [
     {
       id: 1,
-      title: "Everest Base Camp",
-      image: everestBaseCampImage,
-      description: "Walk in the footsteps of legends to the base of the world's highest peak at 5,364m. Experience breathtaking mountain vistas, visit centuries-old monasteries, and immerse yourself in authentic Sherpa culture. This iconic trek passes through Sagarmatha National Park, a UNESCO World Heritage site, offering unparalleled views of Everest, Lhotse, Nuptse, and Ama Dablam.",
-      duration: "14 days",
-      difficulty: "Challenging",
-      groupSize: "2-12",
-      elevation: "5,364m",
-      route: "/treks/everest-base-camp",
-      highlights: ["Namche Bazaar - Sherpa capital", "Tengboche Monastery", "Kala Patthar viewpoint", "Everest Base Camp"],
-      bestSeason: "March-May, September-November"
+      title: 'Everest Base Camp',
+      // Match hero images used on the Everest page
+      image: `/Everest/geetangey-ra4NJidcK1A-unsplash.jpg${bust}`,
+      description:
+        "Walk in the footsteps of legends to the base of the world's highest peak at 5,364m. Experience breathtaking mountain vistas, visit centuries-old monasteries, and immerse yourself in authentic Sherpa culture. This iconic trek passes through Sagarmatha National Park, a UNESCO World Heritage site, offering unparalleled views of Everest, Lhotse, Nuptse, and Ama Dablam.",
+      duration: '14 days',
+      difficulty: 'Challenging',
+      groupSize: '2-12',
+      elevation: '5,364m',
+      route: '/treks/everest-base-camp',
+      highlights: ['Namche Bazaar - Sherpa capital', 'Tengboche Monastery', 'Kala Patthar viewpoint', 'Everest Base Camp'],
+      bestSeason: 'March-May, September-November',
+      fallback: '/placeholder.svg',
     },
     {
       id: 2,
-      title: "Annapurna Circuit",
-      image: annapurnaCircuitImage,
-      description: "Journey through Nepal's most diverse trekking route, crossing the dramatic Thorong La Pass at 5,416m. Experience everything from subtropical forests and terraced fields to arid high-altitude deserts and glacial valleys. This classic trek offers stunning views of Annapurna, Dhaulagiri, Machapuchare, and Manaslu ranges while passing through traditional Gurung and Thakali villages.",
-      duration: "18 days",
-      difficulty: "Moderate to Challenging",
-      groupSize: "2-10",
-      elevation: "5,416m",
-      route: "/treks/annapurna-circuit",
-      highlights: ["Thorong La Pass", "Muktinath Temple", "Manang village", "Diverse ecosystems"],
-      bestSeason: "March-May, September-November"
+      title: 'Annapurna Circuit',
+      // Match hero images used on the Annapurna page
+      image: `/Annapurna/francesca-varisco-r7IBk3kt5hc-unsplash.jpg${bust}`,
+      description:
+        "Journey through Nepal's most diverse trekking route, crossing the dramatic Thorong La Pass at 5,416m. Experience everything from subtropical forests and terraced fields to arid high-altitude deserts and glacial valleys. This classic trek offers stunning views of Annapurna, Dhaulagiri, Machapuchare, and Manaslu ranges while passing through traditional Gurung and Thakali villages.",
+      duration: '18 days',
+      difficulty: 'Moderate to Challenging',
+      groupSize: '2-10',
+      elevation: '5,416m',
+      route: '/treks/annapurna-circuit',
+      highlights: ['Thorong La Pass', 'Muktinath Temple', 'Manang village', 'Diverse ecosystems'],
+      bestSeason: 'March-May, September-November',
+      fallback: '/placeholder.svg',
     },
     {
       id: 3,
-      title: "Langtang Valley",
-      image: langtangValleyImage,
-      description: "Discover the 'Valley of Glaciers' with its unique blend of Himalayan and Tibetan cultures. Trek through Langtang National Park, home to red pandas and diverse flora including rhododendron forests. Experience traditional Tamang villages, visit ancient monasteries, and enjoy close-up views of Langtang Lirung (7,227m) and other spectacular peaks.",
-      duration: "10 days",
-      difficulty: "Moderate",
-      groupSize: "2-8",
-      elevation: "4,984m",
-      route: "/treks/langtang-valley",
-      highlights: ["Kyanjin Gompa monastery", "Langtang Lirung views", "Tamang culture", "Red panda habitat"],
-      bestSeason: "March-May, September-November"
+      title: 'Langtang Valley',
+      // Match hero images used on the Langtang page
+      image: `/Langtang/himalayan-local-guide-xc2GggytytA-unsplash.jpg${bust}`,
+      description:
+        "Discover the 'Valley of Glaciers' with its unique blend of Himalayan and Tibetan cultures. Trek through Langtang National Park, home to red pandas and diverse flora including rhododendron forests. Experience traditional Tamang villages, visit ancient monasteries, and enjoy close-up views of Langtang Lirung (7,227m) and other spectacular peaks.",
+      duration: '10 days',
+      difficulty: 'Moderate',
+      groupSize: '2-8',
+      elevation: '4,984m',
+      route: '/treks/langtang-valley',
+      highlights: ['Kyanjin Gompa monastery', 'Langtang Lirung views', 'Tamang culture', 'Red panda habitat'],
+      bestSeason: 'March-May, September-November',
+      fallback: '/placeholder.svg',
     },
     {
       id: 4,
-      title: "Manaslu Circuit",
-      image: manasluCircuitImage,
-      description: "Trek around the world's eighth highest mountain (8,163m) on this spectacular yet less-crowded circuit. Cross the challenging Larkya La Pass at 5,106m while experiencing authentic mountain culture in traditional villages. This restricted area trek offers pristine wilderness, ancient monasteries, and dramatic mountain scenery including close views of Manaslu, Himalchuli, and Cheo Himal.",
-      duration: "16 days",
-      difficulty: "Challenging",
-      groupSize: "2-8",
-      elevation: "5,106m",
-      route: "/treks/manaslu-circuit",
-      highlights: ["Larkya La Pass", "Samagaon village", "Manaslu views", "Restricted area permit"],
-      bestSeason: "March-May, September-November"
+      title: 'Manaslu Circuit',
+      // Match hero images used on the Manaslu page
+      image: `/Manaslu/erik-OwJ6Cn_DnHM-unsplash.jpg${bust}`,
+      description:
+        "Trek around the world's eighth highest mountain (8,163m) on this spectacular yet less-crowded circuit. Cross the challenging Larkya La Pass at 5,106m while experiencing authentic mountain culture in traditional villages. This restricted area trek offers pristine wilderness, ancient monasteries, and dramatic mountain scenery including close views of Manaslu, Himalchuli, and Cheo Himal.",
+      duration: '16 days',
+      difficulty: 'Challenging',
+      groupSize: '2-8',
+      elevation: '5,106m',
+      route: '/treks/manaslu-circuit',
+      highlights: ['Larkya La Pass', 'Samagaon village', 'Manaslu views', 'Restricted area permit'],
+      bestSeason: 'March-May, September-November',
+      fallback: '/placeholder.svg',
     },
     {
       id: 5,
-      title: "Upper Mustang",
-      image: upperMustangImage,
-      description: "Explore the forbidden kingdom of Mustang, a mystical high-altitude desert that was once an independent Tibetan kingdom. Trek through dramatic canyons, ancient caves, and medieval walled cities including Lo Manthang, the capital. Experience authentic Tibetan Buddhist culture, visit centuries-old monasteries, and witness unique landscapes that resemble the Tibetan plateau.",
-      duration: "12 days",
-      difficulty: "Moderate",
-      groupSize: "2-10",
-      elevation: "4,000m",
-      route: "/treks/upper-mustang",
-      highlights: ["Lo Manthang palace", "Ancient cave monasteries", "Tibetan culture", "Desert landscapes"],
-      bestSeason: "March-November"
+      title: 'Upper Mustang',
+      image: upperMustangImg,
+      description:
+        'Explore the forbidden kingdom of Mustang, a mystical high-altitude desert that was once an independent Tibetan kingdom. Trek through dramatic canyons, ancient caves, and medieval walled cities including Lo Manthang, the capital. Experience authentic Tibetan Buddhist culture, visit centuries-old monasteries, and witness unique landscapes that resemble the Tibetan plateau.',
+      duration: '12 days',
+      difficulty: 'Moderate',
+      groupSize: '2-10',
+      elevation: '4,000m',
+      route: '/treks/upper-mustang',
+      highlights: ['Lo Manthang palace', 'Ancient cave monasteries', 'Tibetan culture', 'Desert landscapes'],
+      bestSeason: 'March-November',
+      fallback: '/placeholder.svg',
     },
     {
       id: 6,
-      title: "Gokyo Lakes",
-      image: gokyoLakesImage,
-      description: "Trek to the stunning turquoise Gokyo Lakes, the world's highest freshwater lake system, situated at 4,700-5,000m altitude. Climb Gokyo Ri (5,357m) for panoramic views of four of the world's six highest peaks: Everest, Lhotse, Makalu, and Cho Oyu. Experience the pristine beauty of the Everest region while avoiding the crowds of the traditional EBC route.",
-      duration: "12 days",
-      difficulty: "Moderate to Challenging",
-      groupSize: "2-10",
-      elevation: "5,357m",
-      route: "/treks/gokyo-lakes",
-      highlights: ["Six sacred lakes", "Gokyo Ri summit", "Four 8000m+ peaks view", "Ngozumpa Glacier"],
-      bestSeason: "March-May, September-November"
-    }
+      title: 'Gokyo Lakes',
+      image: gokyoImg,
+      description:
+        "Trek to the stunning turquoise Gokyo Lakes, the world's highest freshwater lake system, situated at 4,700-5,000m altitude. Climb Gokyo Ri (5,357m) for panoramic views of four of the world's six highest peaks: Everest, Lhotse, Makalu, and Cho Oyu. Experience the pristine beauty of the Everest region while avoiding the crowds of the traditional EBC route.",
+      duration: '12 days',
+      difficulty: 'Moderate to Challenging',
+      groupSize: '2-10',
+      elevation: '5,357m',
+      route: '/treks/gokyo-lakes',
+      highlights: ['Six sacred lakes', 'Gokyo Ri summit', 'Four 8000m+ peaks view', 'Ngozumpa Glacier'],
+      bestSeason: 'March-May, September-November',
+      fallback: '/placeholder.svg',
+    },
   ];
 
   const stats = [
-    { icon: Calendar, label: "Duration", value: treks[activeIndex].duration },
-    { icon: Mountain, label: "Elevation", value: treks[activeIndex].elevation },
-    { icon: Clock, label: "Difficulty", value: treks[activeIndex].difficulty },
-    { icon: Users, label: "Group Size", value: treks[activeIndex].groupSize },
+    { icon: Calendar, label: 'Duration', value: treks[activeIndex].duration },
+    { icon: Mountain, label: 'Elevation', value: treks[activeIndex].elevation },
+    { icon: Clock, label: 'Difficulty', value: treks[activeIndex].difficulty },
+    { icon: Users, label: 'Group Size', value: treks[activeIndex].groupSize },
   ];
 
   return (
@@ -107,9 +122,7 @@ const FeaturedTreks = () => {
           <div className="inline-flex items-center px-3 py-1 mb-6 text-sm font-medium bg-background rounded-full border">
             Featured Treks
           </div>
-          <h2 className="text-section-title mb-6">
-            Iconic Himalayan Adventures
-          </h2>
+          <h2 className="text-section-title mb-6">Iconic Himalayan Adventures</h2>
           <p className="text-body max-w-2xl mx-auto">
             Discover our most sought-after trekking experiences, each designed to showcase 
             Nepal's diverse landscapes and rich mountain cultures.
@@ -124,8 +137,8 @@ const FeaturedTreks = () => {
                 key={trek.id}
                 onClick={() => setActiveIndex(index)}
                 className={`px-4 py-2 text-sm font-medium rounded-md transition-all ${
-                  index === activeIndex 
-                    ? 'bg-background text-foreground shadow-sm' 
+                  index === activeIndex
+                    ? 'bg-background text-foreground shadow-sm'
                     : 'text-muted-foreground hover:text-foreground'
                 }`}
               >
@@ -140,10 +153,17 @@ const FeaturedTreks = () => {
           {/* Image */}
           <div className="order-2 lg:order-1">
             <div className="aspect-[4/3] rounded-2xl overflow-hidden modern-card">
-              <img 
-                src={treks[activeIndex].image} 
+              <img
+                src={treks[activeIndex].image}
                 alt={treks[activeIndex].title}
-                className="w-full h-full object-cover transition-all duration-500"
+                className="w-full h-full object-cover transition-transform duration-[6000ms] ease-in-out animate-kenburns-soft"
+                loading="lazy"
+                onError={(e) => {
+                  const img = e.currentTarget;
+                  if (img.src !== window.location.origin + treks[activeIndex].fallback) {
+                    img.src = treks[activeIndex].fallback;
+                  }
+                }}
               />
             </div>
           </div>
@@ -195,10 +215,17 @@ const FeaturedTreks = () => {
             {treks.map((trek) => (
               <div key={trek.id} className="modern-card overflow-hidden group">
                 <div className="aspect-[4/3] overflow-hidden">
-                  <img 
-                    src={trek.image} 
+                  <img
+                    src={trek.image}
                     alt={trek.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-[6000ms] ease-in-out group-hover:scale-110"
+                    loading="lazy"
+                    onError={(e) => {
+                      const img = e.currentTarget;
+                      if (img.src !== window.location.origin + trek.fallback) {
+                        img.src = trek.fallback;
+                      }
+                    }}
                   />
                 </div>
                 <div className="p-6 space-y-4">
